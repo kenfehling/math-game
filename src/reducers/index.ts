@@ -1,7 +1,7 @@
 import {RECEIVE_PROBLEM, ROTATE_BLOCK} from '../constants/ActionTypes'
 import {ReceiveProblem, RotateBlock, IAction} from '../actions/ProblemActions'
 import IState from '../model/IState'
-import {loadBlocks} from '../utils/blocks'
+import {loadBlocks, rotateBlock} from '../utils/blocks'
 
 export const initialState:IState = {
   question: '',
@@ -14,7 +14,8 @@ export default (state:IState=initialState, action:IAction):IState => {
       const {question, blocks} = action as ReceiveProblem
       return {...state, question, blocks: loadBlocks(blocks)}
     case ROTATE_BLOCK:
-      return state
+      const {id} = action as RotateBlock
+      return {...state, blocks: rotateBlock(state.blocks, id)}
     default:
       return state
   }

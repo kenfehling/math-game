@@ -14,11 +14,13 @@ const Side = ({amount, unit:{abbreviation, shortName}}:IValue) => (
   <div className={`side ${abbreviation}`}>{amount} {shortName}</div>
 )
 
-const Block = ({sides, rotate}:ConnectedBlockProps) => (
+const Block = ({sides, rotated, rotate}:ConnectedBlockProps) => (
   <Draggable bounds='body'>
     <div className={styles.container} onClick={rotate}>
-      <Side {...sides[0]} />
-      <Side {...sides[1]} />
+      <div className={['inner-container', rotated ? 'rotated' : ''].join(' ')}>
+        <Side {...sides[0]} />
+        <Side {...sides[1]} />
+      </div>
     </div>
   </Draggable>
 )

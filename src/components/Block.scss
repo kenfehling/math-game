@@ -3,41 +3,45 @@
 $border-radius: 4px;
 $border-color: #999;
 $divider-color: darken($border-color, 10%);
+$rotate-time: 0.70s;
 
 :local(.container) {
-  border: 2px solid $border-color;
-  border-radius: round($border-radius * 1.5);
-  box-shadow: 0 1px 3px black;
   display: inline-block;
-  margin: 3px;
-  cursor: pointer;
+  .inner-container {
+    border: 2px solid $border-color;
+    border-radius: round($border-radius * 1.5);
+    box-shadow: 0 0 3px black;
+    margin: 3px;
+    cursor: pointer;
 
-  .side {
-    padding: 5px;
-    text-align: center;
-  }
-
-  .side:nth-child(1) {
-    border-top-left-radius: $border-radius;
-    border-top-right-radius: $border-radius;
-    border-bottom: 1px solid $divider-color;
-  }
-
-  .side:nth-child(2) {
-    border-bottom-left-radius: $border-radius;
-    border-bottom-right-radius: $border-radius;
-    border-top: 1px solid $divider-color;
-  }
-
-  @each $unit, $color in $unit-colors {
-    .#{$unit} {
-      background-color: $color;
+    .side {
+      padding: 5px;
+      text-align: center;
     }
-  }
 
-  transition: 0.70s;
+    .side:nth-child(1) {
+      border-top-left-radius: $border-radius;
+      border-top-right-radius: $border-radius;
+      border-bottom: 1px solid $divider-color;
+    }
 
-  .rotated {
-    transform: rotate(180deg);
+    .side:nth-child(2) {
+      border-bottom-left-radius: $border-radius;
+      border-bottom-right-radius: $border-radius;
+      border-top: 1px solid $divider-color;
+    }
+
+    @each $unit, $color in $unit-colors {
+      .#{$unit} {
+        background-color: $color;
+      }
+    }
+
+    transition: $rotate-time;
+
+    &.rotated {
+      transition: $rotate-time;
+      transform: rotate(180deg);
+    }
   }
 }
