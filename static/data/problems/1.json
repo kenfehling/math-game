@@ -1,17 +1,48 @@
 {
   "question": "How many seconds are in a week?",
-  "blocks": [
-    {
-      "sides": [
-        {
-          "amount": 60,
-          "unit": "s"
-        },
-        {
-          "amount": 1,
-          "unit": "min"
-        }
-      ]
-    }
-  ]
+  "blocks": [{
+    "sides": [
+      {
+        "amount": 60,
+        "unit": "s"
+      },
+      {
+        "amount": 1,
+        "unit": "min"
+      }
+    ]
+  }, {
+    "sides": [
+      {
+        "amount": 1,
+        "unit": "hr"
+      },
+      {
+        "amount": 60,
+        "unit": "min"
+      }
+    ]
+  }, {
+    "sides": [
+      {
+        "amount": 1,
+        "unit": "wk"
+      },
+      {
+        "amount": 7,
+        "unit": "days"
+      }
+    ]
+  }, {
+    "sides": [
+      {
+        "amount": 24,
+        "unit": "hr"
+      },
+      {
+        "amount": 1,
+        "unit": "days"
+      }
+    ]
+  }]
 }

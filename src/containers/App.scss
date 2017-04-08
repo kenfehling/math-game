@@ -1,3 +1,6 @@
+@import '../style/colors';
+@import '../style/dimens';
+
 html, body {
   margin: 0;
   padding: 0;
@@ -5,7 +8,8 @@ html, body {
 
 :local(.container) {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  background-color: #EEE;
+  font-size: $default-text-size;
+  background-color: $app-bg-color;
   height: 100vh;
   padding: 20px;
   box-sizing: border-box;

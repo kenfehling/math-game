@@ -1,24 +1,26 @@
-$factor: 12.5%;
-$time: #00FF00;
+$app-bg-color: #EEE;
+$block-text-color: #222;
+
+$time: #33FF33;
 $distance: #ff8033;
 $volume: #6699FF;
 $mass: #ff9999;
-
+$factor: 20%;
 
 $unit-colors: (
-  ms: lighten($time, $factor * 3),
-  s: lighten($time, $factor * 2),
+  ms: lighten($time, $factor * 2),
+  s: lighten($time, $factor * 1.5),
   min: lighten($time, $factor),
   hr: $time,
   days: darken($time, $factor),
-  wk: darken($time, $factor * 2),
-  yr: darken($time, $factor * 3),
+  wk: darken($time, $factor * 1.5),
+  yr: darken($time, $factor * 2),
 
-  mm: lighten($distance, $factor * 3),
-  cm: lighten($distance, $factor * 2),
+  mm: lighten($distance, $factor * 2),
+  cm: lighten($distance, $factor * 1.5),
   in: lighten($distance, $factor),
   ft: $distance,
   m: darken($distance, $factor),
-  km: darken($distance, $factor * 2),
-  miles: darken($distance, $factor * 3)
+  km: darken($distance, $factor * 1.5),
+  miles: darken($distance, $factor * 2)
 )
