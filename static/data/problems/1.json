@@ -1,0 +1,18 @@
+{
+  "question": "Why is it that every time I...",
+  "blocks": [
+    {
+      "id": 1,
+      "sides": [
+        {
+          "amount": 60,
+          "unit": "s"
+        },
+        {
+          "amount": 1,
+          "unit": "min"
+        }
+      ]
+    }
+  ]
+}

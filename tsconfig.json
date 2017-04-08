@@ -1,0 +1,23 @@
+{
+  "version": "2.2.2",
+  "compilerOptions": {
+    "outDir": "./lib/",
+    "module": "commonjs",
+    "target": "es5",
+    "lib": ["dom", "es6", "es2017.object"],
+    "jsx": "react",
+    "sourceMap": true,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "skipDefaultLibCheck": true,
+    "skipLibCheck": true,
+    "strictNullChecks": true
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "files" : [
+    "declaration.d.ts"
+  ]
+}
