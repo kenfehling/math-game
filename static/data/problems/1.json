@@ -1,8 +1,7 @@
 {
-  "question": "Why is it that every time I...",
+  "question": "How many seconds are in a week?",
   "blocks": [
     {
-      "id": 1,
       "sides": [
         {
           "amount": 60,

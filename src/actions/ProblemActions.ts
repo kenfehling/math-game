@@ -1,6 +1,6 @@
 import {ROTATE_BLOCK, RECEIVE_PROBLEM} from '../constants/ActionTypes'
 import {fetch} from '../utils/api';
-import IProblemDescription from '../model/IProblemDescription'
+import {IProblemDescription} from '../model'
 
 export interface IAction {type: string}
 export type ReceiveProblem = IAction & IProblemDescription

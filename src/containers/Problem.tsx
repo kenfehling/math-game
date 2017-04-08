@@ -1,10 +1,10 @@
 import * as React from 'react'
 import {Component} from 'react'
-import IBlock from '../model/IBlock'
 import Block from '../components/Block'
 import * as styles from './Problem.scss'
 import {connect} from 'react-redux'
 import {fetchProblem} from '../actions/ProblemActions'
+import {IBlock} from '../model'
 
 interface ProblemProps {
   id: number

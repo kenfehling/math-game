@@ -1,10 +1,9 @@
 import * as React from 'react'
 import * as Draggable from 'react-draggable'
 import * as styles from './Block.scss'
-import IBlock from '../model/IBlock'
 import {connect} from 'react-redux'
 import {rotateBlock} from '../actions/ProblemActions'
-import IValue from '../model/IValue'
+import {IBlock, IValue} from '../model'
 
 type ConnectedBlockProps = IBlock & {
   rotate: () => void

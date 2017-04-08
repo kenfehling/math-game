@@ -1,7 +1,7 @@
 import {RECEIVE_PROBLEM, ROTATE_BLOCK} from '../constants/ActionTypes'
 import {ReceiveProblem, RotateBlock, IAction} from '../actions/ProblemActions'
-import IState from '../model/IState'
 import {loadBlocks, rotateBlock} from '../utils/blocks'
+import {IState} from '../model'
 
 export const initialState:IState = {
   question: '',

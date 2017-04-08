@@ -1,8 +1,5 @@
-import IBlockDescription from '../model/IBlockDescription'
-import IBlock from '../model/IBlock'
-import IUnit from '../model/IUnit'
+import {IBlock, IBlockDescription, IUnit} from '../model'
 import * as Units from '../constants/Units'
-
 const units:IUnit[] = Object.values(Units)
 
 const loadUnit = (unit:string):IUnit => {
@@ -14,8 +11,8 @@ const loadUnit = (unit:string):IUnit => {
 }
 
 export const loadBlocks = (blocks:IBlockDescription[]):IBlock[] =>
-    blocks.map(({id, sides}) =>
-      ({id, sides: sides.map(({amount, unit}) =>
+    blocks.map(({sides}, i:number) =>
+      ({id: i + 1, sides: sides.map(({amount, unit}) =>
         ({amount, unit: loadUnit(unit)}))}))
 
 export const findBlock = (blocks:IBlock[], id:number):IBlock => {
