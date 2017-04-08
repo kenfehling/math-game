@@ -3,7 +3,7 @@ import * as Units from '../constants/Units'
 const units:IUnit[] = Object.values(Units)
 
 const loadUnit = (unit:string):IUnit => {
-  const result = units.find(u => u.abbreviation === unit)
+  const result = units.find(u => u.abbrev === unit)
   if (!result) {
     throw new Error(`Unit '${unit}' not found`)
   }

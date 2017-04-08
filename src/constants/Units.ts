@@ -2,88 +2,114 @@ import {IUnit, IUnitType} from '../model'
 
 export const seconds: IUnit = {
   type: IUnitType.time,
-  longName: 'seconds',
+  longName: 'second',
   shortName: 'sec',
-  abbreviation: 's'
+  pluralLongName: 'seconds',
+  pluralShortName: 'sec',
+  abbrev: 's'
 }
 
 export const minutes: IUnit = {
   type: IUnitType.time,
-  longName: 'minutes',
+  longName: 'minute',
   shortName: 'min',
-  abbreviation: 'min'
+  pluralLongName: 'minutes',
+  pluralShortName: 'min',
+  abbrev: 'min'
 }
 
 export const hours: IUnit = {
   type: IUnitType.time,
-  longName: 'hours',
+  longName: 'hour',
   shortName: 'hr',
-  abbreviation: 'hr'
+  pluralLongName: 'hours',
+  pluralShortName: 'hrs',
+  abbrev: 'hr'
 }
 export const days: IUnit = {
   type: IUnitType.time,
-  longName: 'days',
-  shortName: 'days',
-  abbreviation: 'days'
+  longName: 'day',
+  shortName: 'day',
+  pluralLongName: 'days',
+  pluralShortName: 'days',
+  abbrev: 'day'
 }
 export const weeks: IUnit = {
   type: IUnitType.time,
-  longName: 'weeks',
-  shortName: 'wk',
-  abbreviation: 'wk'
+  longName: 'week',
+  shortName: 'week',
+  pluralLongName: 'weeks',
+  pluralShortName: 'weeks',
+  abbrev: 'wk'
 }
 export const years: IUnit = {
   type: IUnitType.time,
-  longName: 'years',
+  longName: 'year',
   shortName: 'yr',
-  abbreviation: 'yr'
+  pluralLongName: 'years',
+  pluralShortName: 'yrs',
+  abbrev: 'yr'
 }
 
 export const millimeters: IUnit = {
   type: IUnitType.distance,
-  longName: 'millimeters',
+  longName: 'millimeter',
   shortName: 'mm',
-  abbreviation: 'mm'
+  pluralLongName: 'millimeters',
+  pluralShortName: 'mm',
+  abbrev: 'mm'
 }
 
 export const centimeters: IUnit = {
   type: IUnitType.distance,
-  longName: 'centimeters',
+  longName: 'centimeter',
   shortName: 'cm',
-  abbreviation: 'cm'
+  pluralLongName: 'centimeters',
+  pluralShortName: 'cm',
+  abbrev: 'cm'
 }
 
 export const inches: IUnit = {
   type: IUnitType.distance,
-  longName: 'inches',
+  longName: 'inch',
   shortName: 'in',
-  abbreviation: 'in'
+  pluralLongName: 'inches',
+  pluralShortName: 'in',
+  abbrev: 'in'
 }
 
 export const feet: IUnit = {
   type: IUnitType.distance,
-  longName: 'feet',
+  longName: 'foot',
   shortName: 'ft',
-  abbreviation: 'ft'
+  pluralLongName: 'feet',
+  pluralShortName: 'ft',
+  abbrev: 'ft'
 }
 
 export const meters: IUnit = {
   type: IUnitType.distance,
-  longName: 'meters',
+  longName: 'meter',
   shortName: 'm',
-  abbreviation: 'm'
+  pluralLongName: 'meters',
+  pluralShortName: 'm',
+  abbrev: 'm'
 }
 
 export const kilometers: IUnit = {
   type: IUnitType.distance,
-  longName: 'kilometers',
+  longName: 'kilometer',
   shortName: 'km',
-  abbreviation: 'km'
+  pluralLongName: 'kilometers',
+  pluralShortName: 'km',
+  abbrev: 'km'
 }
 
 export const miles: IUnit = {
   type: IUnitType.distance,
-  longName: 'miles',
-  shortName: 'miles',
-  abbreviation: 'miles'
+  longName: 'mile',
+  shortName: 'mile',
+  pluralLongName: 'miles',
+  pluralShortName: 'miles',
+  abbrev: 'mi'
 }

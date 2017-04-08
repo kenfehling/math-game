@@ -9,9 +9,11 @@ type ConnectedBlockProps = IBlock & {
   rotate: () => void
 }
 
-const Side = ({amount, unit:{shortName, abbreviation}}:IValue) => (
-  <div className={`side ${abbreviation}`}>
-    <div className='text'>{amount} {shortName}</div>
+const Side = ({amount, unit:{shortName, pluralShortName, abbrev}}:IValue) => (
+  <div className={`side ${abbrev}`}>
+    <div className='text'>
+      {amount} {amount === 1 ? shortName : pluralShortName}
+    </div>
   </div>
 )
 

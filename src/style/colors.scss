@@ -12,7 +12,7 @@ $unit-colors: (
   s: lighten($time, $factor * 1.5),
   min: lighten($time, $factor),
   hr: $time,
-  days: darken($time, $factor),
+  day: darken($time, $factor),
   wk: darken($time, $factor * 1.5),
   yr: darken($time, $factor * 2),
 
@@ -22,5 +22,5 @@ $unit-colors: (
   ft: $distance,
   m: darken($distance, $factor),
   km: darken($distance, $factor * 1.5),
-  miles: darken($distance, $factor * 2)
+  mile: darken($distance, $factor * 2)
 )

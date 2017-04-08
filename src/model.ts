@@ -9,7 +9,9 @@ export interface IUnit {
   type: IUnitType,
   longName: string,
   shortName: string,
-  abbreviation: string
+  pluralLongName: string,
+  pluralShortName: string,
+  abbrev: string
 }
 
 export interface IValue {

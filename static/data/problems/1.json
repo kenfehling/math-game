@@ -30,7 +30,7 @@
       },
       {
         "amount": 7,
-        "unit": "days"
+        "unit": "day"
       }
     ]
   }, {
@@ -41,7 +41,7 @@
       },
       {
         "amount": 1,
-        "unit": "days"
+        "unit": "day"
       }
     ]
   }]
