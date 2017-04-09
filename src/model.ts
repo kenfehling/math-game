@@ -15,7 +15,7 @@ export interface IUnit {
 }
 
 export interface IValue {
-  amount: number
+  value: number
   unit: IUnit
 }
 
@@ -24,6 +24,10 @@ export interface IBlock {
   sides: [IValue, IValue]
   used?: boolean
   rotated?: boolean
+}
+
+export type IndexedBlock = IBlock & {
+  index: number
 }
 
 export interface IProblem {
@@ -37,7 +41,7 @@ export type IState = IProblem  // Eventually may have score, etc.
 // Describes the data that gets read in from JSON
 
 export interface IValueDescription {
-  amount: number
+  value: number
   unit: string
 }
 

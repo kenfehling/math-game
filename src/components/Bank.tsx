@@ -5,7 +5,7 @@ import Block from './Block'
 import {BLOCK} from '../constants/ItemTypes'
 import {connect} from 'react-redux'
 import {switchBlock} from '../actions/ProblemActions'
-import {IBlock, IState} from '../model'
+import {IBlock, IndexedBlock, IState} from '../model'
 
 interface BankProps {
   blocks: IBlock[]
@@ -28,7 +28,13 @@ function targetCollect(connect) {
 const blockTarget = {
   drop(props:ConnectedBankProps, monitor) {
     const {switchBlock, used} = props;
-    switchBlock(monitor.getItem().id, used);
+    const item:IndexedBlock = monitor.getItem()
+    if (!!item.used !== !!used) {  // if going from one bank to the other
+
+      console.log(item.used, used)
+
+      switchBlock(item.id, used);
+    }
   },
   hover(props:ConnectedBankProps, monitor, component) {
 
@@ -40,7 +46,7 @@ const Bank = ({blocks, title, className, connectDropTarget}:ConnectedBankProps) 
     <div className={[styles.container, className].join(' ')}>
       <div className='title'>{title}</div>
       <div className='blocks'>
-        {blocks.map((b, i) => <Block key={i} {...b} />)}
+        {blocks.map((b, i) => <Block key={i} id={b.id} />)}
       </div>
     </div>
   )
@@ -55,4 +61,4 @@ export default connect(
   () => ({}),
   {switchBlock},
   mergeProps
-)(DropTarget<BankProps>(BLOCK, blockTarget, targetCollect)(Bank))
+)(DropTarget<ConnectedBankProps>(BLOCK, blockTarget, targetCollect)(Bank))

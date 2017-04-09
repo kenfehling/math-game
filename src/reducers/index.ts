@@ -5,7 +5,7 @@ import {
   ReceiveProblem, RotateBlock, IAction,
   SwitchBlock, MoveBlock
 } from '../actions/ProblemActions'
-import {loadBlocks, rotateBlock, switchBlock} from '../utils/blocks'
+import {loadBlocks, rotateBlock, moveBlock, switchBlock} from '../utils/blocks'
 import {IState} from '../model'
 
 export const initialState:IState = {
@@ -24,8 +24,8 @@ export default (state:IState=initialState, action:IAction):IState => {
       return {...state, blocks: rotateBlock(state.blocks, id)}
     }
     case MOVE_BLOCK: {
-      const {id, index} = action as MoveBlock
-      return state
+      const {id, toIndex} = action as MoveBlock
+      return {...state, blocks: moveBlock(state.blocks, id, toIndex)}
     }
     case SWITCH_BLOCK: {
       const {id, used} = action as SwitchBlock

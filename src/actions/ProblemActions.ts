@@ -7,7 +7,7 @@ import {IBlock, IProblemDescription} from '../model'
 export interface IAction {type: string}
 export type ReceiveProblem = IAction & IProblemDescription
 export type RotateBlock = IAction & {id:number}
-export type MoveBlock = IAction & {id:number, index:number}
+export type MoveBlock = IAction & {id:number, toIndex:number}
 export type SwitchBlock = IAction & {id:number, used:boolean}
 
 const receiveProblem = (problem:IProblemDescription):ReceiveProblem => ({
@@ -25,10 +25,10 @@ export const rotateBlock = (id:number):RotateBlock => ({
   id
 })
 
-export const moveBlock = (id:number, index:number):MoveBlock => ({
+export const moveBlock = (id:number, toIndex:number):MoveBlock => ({
   type: MOVE_BLOCK,
   id,
-  index
+  toIndex
 })
 
 export const switchBlock = (id:number, used:boolean) => ({

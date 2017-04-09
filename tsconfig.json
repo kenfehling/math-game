@@ -4,7 +4,7 @@
     "outDir": "./lib/",
     "module": "commonjs",
     "target": "es5",
-    "lib": ["dom", "es6", "es2017.object"],
+    "lib": ["dom", "es6"],
     "jsx": "react",
     "sourceMap": true,
     "moduleResolution": "node",
@@ -15,7 +15,8 @@
     "strictNullChecks": true
   },
   "include": [
-    "src/**/*"
+    "src/**/*",
+    "test/**/*"
   ],
   "files" : [
     "declaration.d.ts"

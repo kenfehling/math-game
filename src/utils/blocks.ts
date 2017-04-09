@@ -1,6 +1,7 @@
-import {IBlock, IBlockDescription, IUnit} from '../model'
+import {IBlock, IBlockDescription, IndexedBlock, IUnit} from '../model'
 import * as Units from '../constants/Units'
-const units:IUnit[] = Object.values(Units)
+import * as R from 'ramda'
+const units:IUnit[] = R.values(Units) as IUnit[]
 
 const loadUnit = (unit:string):IUnit => {
   const result = units.find(u => u.abbrev === unit)
@@ -12,10 +13,10 @@ const loadUnit = (unit:string):IUnit => {
 
 export const loadBlocks = (blocks:IBlockDescription[]):IBlock[] =>
     blocks.map(({sides}, i:number) =>
-      ({id: i + 1, sides: sides.map(({amount, unit}) =>
-        ({amount, unit: loadUnit(unit)}))}))
+      ({id: i + 1, sides: sides.map(({value, unit}) =>
+        ({value, unit: loadUnit(unit)}))}))
 
-export const findBlock = (blocks:IBlock[], id:number):IBlock => {
+export function findBlock<B extends IBlock>(blocks:B[], id:number):B {
   const block = blocks.find(b => b.id === id)
   if (!block) {
     throw new Error(`Block with id = ${id} not found`)
@@ -31,10 +32,8 @@ const findBlockIndex = (bs:IBlock[], id:number):number => {
   return index
 }
 
-const replaceBlockAt = (bs:IBlock[], i:number, block:IBlock):IBlock[] => [
-  ...bs.slice(0, i),
-  block,
-  ...bs.slice(i + 1)
+const replaceBlockAt = (bs:IBlock[], index:number, block:IBlock):IBlock[] => [
+  ...bs.slice(0, index), block, ...bs.slice(index + 1)
 ]
 
 const replaceBlock = (bs:IBlock[], id:number, fn:(b:IBlock)=>IBlock):IBlock[] => {
@@ -42,8 +41,25 @@ const replaceBlock = (bs:IBlock[], id:number, fn:(b:IBlock)=>IBlock):IBlock[] =>
   return replaceBlockAt(bs, index, fn(bs[index]))
 }
 
+export const insertBlockAt = (bs:IBlock[], index:number, b:IBlock):IBlock[] => [
+  ...bs.slice(0, index), b, ...bs.slice(index)
+]
+
+const removeBlockAt = (blocks:IBlock[], index:number):IBlock[] => [
+  ...blocks.slice(0, index), ...blocks.slice(index + 1)
+]
+
+export const removeBlock = (blocks:IBlock[], id:number):IBlock[] =>
+  removeBlockAt(blocks, findBlockIndex(blocks, id))
+
+export const moveBlock = (blocks:IBlock[], id:number, toIndex:number):IBlock[] =>
+  insertBlockAt(removeBlock(blocks, id), toIndex, findBlock(blocks, id))
+
 export const rotateBlock = (blocks:IBlock[], id:number):IBlock[] =>
   replaceBlock(blocks, id, b => ({...b, rotated: !b.rotated}))
 
 export const switchBlock = (blocks:IBlock[], id:number, used:boolean):IBlock[] =>
   replaceBlock(blocks, id, b => ({...b, used}))
+
+export const indexBlocks = (blocks:IBlock[]):IndexedBlock[] =>
+  blocks.map((b, i) => ({...b, index: i}))

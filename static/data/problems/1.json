@@ -3,44 +3,44 @@
   "blocks": [{
     "sides": [
       {
-        "amount": 60,
+        "value": 60,
         "unit": "s"
       },
       {
-        "amount": 1,
+        "value": 1,
         "unit": "min"
       }
     ]
   }, {
     "sides": [
       {
-        "amount": 1,
+        "value": 1,
         "unit": "hr"
       },
       {
-        "amount": 60,
+        "value": 60,
         "unit": "min"
       }
     ]
   }, {
     "sides": [
       {
-        "amount": 1,
+        "value": 1,
         "unit": "wk"
       },
       {
-        "amount": 7,
+        "value": 7,
         "unit": "day"
       }
     ]
   }, {
     "sides": [
       {
-        "amount": 24,
+        "value": 24,
         "unit": "hr"
       },
       {
-        "amount": 1,
+        "value": 1,
         "unit": "day"
       }
     ]
