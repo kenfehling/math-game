@@ -1,0 +1,11 @@
+@import '../style/dimens';
+
+:local(.container) {
+  border: 2px solid #000;
+  border-radius: 4px;
+  height: $block-width * 1.5;
+
+  .blocks {
+    display: flex;
+  }
+}

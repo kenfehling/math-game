@@ -1,10 +1,11 @@
 import * as React from 'react'
 import {Component} from 'react'
-import Block from '../components/Block'
+import UsedBank from '../components/UsedBank'
+import UnusedBank from '../components/UnusedBank'
 import * as styles from './Problem.scss'
 import {connect} from 'react-redux'
 import {fetchProblem} from '../actions/ProblemActions'
-import {IBlock} from '../model'
+import {IBlock, IState} from '../model'
 
 interface ProblemProps {
   id: number
@@ -12,8 +13,7 @@ interface ProblemProps {
 
 type ConnectedProblemProps = ProblemProps & {
   load: () => void,
-  question: string|undefined,
-  blocks: IBlock[]
+  question: string|undefined
 }
 
 class Problem extends Component<ConnectedProblemProps, undefined> {
@@ -23,30 +23,35 @@ class Problem extends Component<ConnectedProblemProps, undefined> {
   }
 
   render() {
-    const {question, blocks} = this.props
+    const {question} = this.props
     return (
       <div className={styles.container}>
         <div className='question'>
           {question}
         </div>
-        <div className='blocks'>
-          {blocks.map(block => <Block key={block.id} {...block} />)}
-        </div>
+        <UsedBank />
+        <UnusedBank />
       </div>
     )
   }
 }
 
-const mapStateToProps = (state) => ({
-  question: state.question,
-  blocks: state.blocks
+const mapStateToProps = (state:IState) => ({
+  question: state.question
 })
 
 const mapDispatchToProps = (dispatch, ownProps:ProblemProps) => ({
   load: () => dispatch(fetchProblem(ownProps.id))
 })
 
+const mergeProps = (stateProps, dispatchProps, ownProps) => ({
+  ...stateProps,
+  ...dispatchProps,
+  ...ownProps
+})
+
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
+  mergeProps
 )(Problem)
