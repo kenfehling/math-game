@@ -7,10 +7,12 @@ import {BLOCK} from '../constants/ItemTypes'
 import {connect} from 'react-redux'
 import {moveBlock} from '../actions/ProblemActions'
 import {IBlock, IState} from '../model'
+import {neverUpdate} from '../enhancers'
 
 export interface BankProps {
   blocks: IBlock[]
   title: string
+  className: string
 }
 
 type ConnectedBankProps = BankProps & {
@@ -30,16 +32,19 @@ const blockTarget = {
   }
 }
 
-const Bank = ({blocks, title, connectDropTarget}:ConnectedBankProps) =>
+const Item = ({item}) => <Block {...item} />
+
+const Bank = ({blocks, title, className, connectDropTarget}:ConnectedBankProps) =>
   connectDropTarget(
-    <div className={styles.container}>
+    <div className={[styles.container, className].join(' ')}>
       <div className='title'>{title}</div>
       {blocks.length > 0 ?
         <Reorder
            itemKey='id'
            listClass='blocks'
            list={blocks}
-           template={({item}) => <Block {...item} />}
+           holdTime='100'
+           template={Item}
            callback={moveBlock}
            selectedKey='uuid'
         />  : <div></div>

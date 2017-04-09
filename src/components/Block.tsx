@@ -50,10 +50,6 @@ const Block = ({sides, rotated, rotate, connectDragSource}:ConnectedBlockProps) 
     </div>
   )
 
-const mapStateToProps = (state:IState) => ({
-  rotation: 0
-})
-
 const mapDispatchToProps = (dispatch, ownProps:IBlock) => ({
   rotate: () => dispatch(rotateBlock(ownProps.id))
 })
@@ -66,7 +62,7 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => ({
 
 export default DragSource(BLOCK, blockSource, sourceCollect)(
   connect(
-    mapStateToProps,
+    () => ({}),
     mapDispatchToProps,
     mergeProps
   )(Block)
