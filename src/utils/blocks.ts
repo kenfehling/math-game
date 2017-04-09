@@ -65,7 +65,12 @@ const calculateUnit = (top:IValue[], bottom:IValue[]):string => {
 const round = (value:number, places:number=3) => {
   const x:number = parseFloat(value.toFixed(places))
   if (x === 0) {
-    return round(value, places + 1)
+    if (places > 15) {
+      return x
+    }
+    else {
+      return round(value, places + 1)
+    }
   }
   else {
     return x
