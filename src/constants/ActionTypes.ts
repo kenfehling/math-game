@@ -1,2 +1,4 @@
 export const RECEIVE_PROBLEM = 'RECEIVE_QUESTION'
 export const ROTATE_BLOCK = 'ROTATE_BLOCK'
+export const MOVE_BLOCK = 'MOVE_BLOCK'
+export const SWITCH_BLOCK = 'SWITCH_BLOCK'

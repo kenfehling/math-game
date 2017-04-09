@@ -6,27 +6,32 @@ export enum IUnitType {
 }
 
 export interface IUnit {
-  type: IUnitType,
-  longName: string,
-  shortName: string,
-  pluralLongName: string,
-  pluralShortName: string,
+  type: IUnitType
+  longName: string
+  shortName: string
+  pluralLongName: string
+  pluralShortName: string
   abbrev: string
 }
 
 export interface IValue {
-  amount: number,
+  value: number
   unit: IUnit
 }
 
 export interface IBlock {
-  id: number,
+  id: number
   sides: [IValue, IValue]
+  used?: boolean
   rotated?: boolean
 }
 
+export type IndexedBlock = IBlock & {
+  index: number
+}
+
 export interface IProblem {
-  question: string,
+  question: string
   blocks: IBlock[]
 }
 
@@ -36,7 +41,7 @@ export type IState = IProblem  // Eventually may have score, etc.
 // Describes the data that gets read in from JSON
 
 export interface IValueDescription {
-  amount: number,
+  value: number
   unit: string
 }
 
@@ -45,6 +50,6 @@ export interface IBlockDescription {
 }
 
 export interface IProblemDescription {
-  question: string,
+  question: string
   blocks: IBlockDescription[]
 }
