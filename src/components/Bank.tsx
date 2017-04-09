@@ -1,14 +1,13 @@
 import * as React from 'react'
 import {DropTarget} from 'react-dnd'
-import * as Reorder from 'react-reorder'
 import * as styles from './Bank.scss'
 import Block from './Block'
 import {BLOCK} from '../constants/ItemTypes'
 import {connect} from 'react-redux'
-import {moveBlock, switchBlock} from '../actions/ProblemActions'
+import {switchBlock} from '../actions/ProblemActions'
 import {IBlock, IState} from '../model'
 
-export interface BankProps {
+interface BankProps {
   blocks: IBlock[]
   title: string
   used: boolean
@@ -17,7 +16,6 @@ export interface BankProps {
 
 type ConnectedBankProps = BankProps & {
   connectDropTarget: Function
-  moveBlock: (newOrder) => void
   switchBlock: (id:number, used:boolean) => void
 }
 
@@ -37,23 +35,13 @@ const blockTarget = {
   }
 }
 
-const Item = ({item}) => <Block {...item} />
-
 const Bank = ({blocks, title, className, connectDropTarget}:ConnectedBankProps) =>
   connectDropTarget(
     <div className={[styles.container, className].join(' ')}>
       <div className='title'>{title}</div>
-      {blocks.length > 0 ?
-        <Reorder
-           itemKey='id'
-           listClass='blocks'
-           list={blocks}
-           holdTime='100'
-           template={Item}
-           callback={moveBlock}
-           selectedKey='uuid'
-        />  : <div></div>
-      }
+      <div className='blocks'>
+        {blocks.map((b, i) => <Block key={i} {...b} />)}
+      </div>
     </div>
   )
 

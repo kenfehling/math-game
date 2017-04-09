@@ -20,7 +20,6 @@
     "react-dnd-html5-backend": "^2.3.0",
     "react-dnd-touch-backend": "^0.3.6",
     "react-redux": "^5.0.3",
-    "react-reorder": "^2.0.0",
     "recompose": "^0.23.0",
     "redux": "^3.6.0",
     "redux-thunk": "^2.2.0",

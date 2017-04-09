@@ -24,7 +24,7 @@ export default (state:IState=initialState, action:IAction):IState => {
       return {...state, blocks: rotateBlock(state.blocks, id)}
     }
     case MOVE_BLOCK: {
-      const {newOrder} = action as MoveBlock
+      const {id, index} = action as MoveBlock
       return state
     }
     case SWITCH_BLOCK: {
