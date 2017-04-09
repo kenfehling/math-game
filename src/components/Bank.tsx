@@ -30,9 +30,6 @@ const blockTarget = {
     const {switchBlock, used} = props;
     const item:IndexedBlock = monitor.getItem()
     if (!!item.used !== !!used) {  // if going from one bank to the other
-
-      console.log(item.used, used)
-
       switchBlock(item.id, used);
     }
   },

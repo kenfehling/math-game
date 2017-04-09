@@ -3,7 +3,7 @@ import {DragSource, DropTarget} from 'react-dnd'
 import * as styles from './Block.scss'
 import {connect} from 'react-redux'
 import {rotateBlock, moveBlock} from '../actions/ProblemActions'
-import {IBlock, IndexedBlock, IState, IValue} from '../model'
+import {IndexedBlock, IValue} from '../model'
 import {BLOCK} from '../constants/ItemTypes'
 import {findDOMNode} from 'react-dom'
 import {createStructuredSelector} from 'reselect'
@@ -26,10 +26,7 @@ interface ConnectedBlockProps {
  */
 const blockSource = {
   beginDrag(props:ConnectedBlockProps) {
-    return {
-      id: props.block.id,
-      index: props.block.index
-    }
+    return props.block
   }
 }
 
