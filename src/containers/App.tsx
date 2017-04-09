@@ -5,6 +5,7 @@ import {DragDropContext} from 'react-dnd'
 import * as bowser from 'bowser'
 import * as styles from './App.scss'
 import Problem from './Problem'
+import {ComponentClass} from 'react'
 
 const App = () => (
   <div className={styles.container}>
@@ -12,5 +13,5 @@ const App = () => (
   </div>
 )
 
-const touch = bowser.mobile || bowser.tablet
-export default DragDropContext(touch ? TouchBackend : HTML5Backend)(App)
+const backend = bowser.mobile || bowser.tablet ? TouchBackend : HTML5Backend
+export default DragDropContext(backend)(App) as ComponentClass<{}>

@@ -1,4 +1,6 @@
-import {RECEIVE_PROBLEM, ROTATE_BLOCK, MOVE_BLOCK} from '../constants/ActionTypes'
+import {
+  RECEIVE_PROBLEM, ROTATE_BLOCK, MOVE_BLOCK, SWITCH_BLOCK
+} from '../constants/ActionTypes'
 import {fetch} from '../utils/api';
 import {IBlock, IProblemDescription} from '../model'
 
@@ -6,6 +8,7 @@ export interface IAction {type: string}
 export type ReceiveProblem = IAction & IProblemDescription
 export type RotateBlock = IAction & {id:number}
 export type MoveBlock = IAction & {newOrder:IBlock[]}
+export type SwitchBlock = IAction & {id:number, used:boolean}
 
 const receiveProblem = (problem:IProblemDescription):ReceiveProblem => ({
   type: RECEIVE_PROBLEM,
@@ -25,4 +28,10 @@ export const rotateBlock = (id:number):RotateBlock => ({
 export const moveBlock = (newOrder):MoveBlock => ({
   type: MOVE_BLOCK,
   newOrder
+})
+
+export const switchBlock = (id:number, used:boolean) => ({
+  type: SWITCH_BLOCK,
+  id,
+  used
 })

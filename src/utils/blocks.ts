@@ -44,3 +44,6 @@ const replaceBlock = (bs:IBlock[], id:number, fn:(b:IBlock)=>IBlock):IBlock[] =>
 
 export const rotateBlock = (blocks:IBlock[], id:number):IBlock[] =>
   replaceBlock(blocks, id, b => ({...b, rotated: !b.rotated}))
+
+export const switchBlock = (blocks:IBlock[], id:number, used:boolean):IBlock[] =>
+  replaceBlock(blocks, id, b => ({...b, used}))

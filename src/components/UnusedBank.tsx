@@ -10,7 +10,7 @@ const mapStateToProps = createStructuredSelector({
 })
 
 const UnusedBank = ({blocks}) => (
-  <Bank title='Unused' className={styles.container} blocks={blocks} />
+  <Bank title='Unused' used='false' className={styles.container} blocks={blocks} />
 )
 
 export default connect(

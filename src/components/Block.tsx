@@ -6,7 +6,9 @@ import {rotateBlock} from '../actions/ProblemActions'
 import {IBlock, IState, IValue} from '../model'
 import {BLOCK} from '../constants/ItemTypes'
 
-type ConnectedBlockProps = IBlock & {
+type BlockProps = IBlock
+
+type ConnectedBlockProps = BlockProps & {
   rotate: () => void
   connectDragSource: Function
 }
@@ -50,7 +52,7 @@ const Block = ({sides, rotated, rotate, connectDragSource}:ConnectedBlockProps) 
     </div>
   )
 
-const mapDispatchToProps = (dispatch, ownProps:IBlock) => ({
+const mapDispatchToProps = (dispatch, ownProps:BlockProps) => ({
   rotate: () => dispatch(rotateBlock(ownProps.id))
 })
 
@@ -60,10 +62,8 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => ({
   ...ownProps
 })
 
-export default DragSource(BLOCK, blockSource, sourceCollect)(
-  connect(
-    () => ({}),
-    mapDispatchToProps,
-    mergeProps
-  )(Block)
-)
+export default connect(
+  () => ({}),
+  mapDispatchToProps,
+  mergeProps
+)(DragSource<BlockProps>(BLOCK, blockSource, sourceCollect)(Block))
