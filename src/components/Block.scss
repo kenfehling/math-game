@@ -42,8 +42,6 @@ $rotate-time: 0.70s;
       }
     }
 
-    transition: $rotate-time;
-
     @keyframes fade1 {
       0%   { opacity: 0; }
       100% { opacity: 1; }
@@ -54,9 +52,16 @@ $rotate-time: 0.70s;
       100% { opacity: 1; }
     }
 
-    &.rotated {
+    &.rotate {
       transition: $rotate-time;
+    }
+
+    &.rotated {
       transform: rotate(180deg);
+    }
+
+    &.unrotated {
+      transform: rotate(0);
     }
 
     &.rotated .text {
@@ -64,7 +69,7 @@ $rotate-time: 0.70s;
       transform: rotate(180deg);
     }
 
-    &:not(.rotated) .text {
+    &.unrotated .text {
       animation: fade2 $rotate-time ease-in-out;
     }
   }

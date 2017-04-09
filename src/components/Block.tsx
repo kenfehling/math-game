@@ -1,4 +1,5 @@
 import * as React from 'react'
+import {Component} from 'react'
 import {DragSource, DropTarget} from 'react-dnd'
 import * as styles from './Block.scss'
 import {connect} from 'react-redux'
@@ -19,6 +20,10 @@ interface ConnectedBlockProps {
   move: (id:number, toIndex) => void
   connectDragSource: Function
   connectDropTarget: Function
+}
+
+interface BlockState {
+  rotate: boolean
 }
 
 /**
@@ -99,16 +104,54 @@ const Side = ({value, unit:{shortName, pluralShortName, abbrev}}:IValue) => (
   </div>
 )
 
-const Block = ({block:{sides, rotated}, rotate, connectDragSource,
-                connectDropTarget}:ConnectedBlockProps) =>
-  connectDragSource(connectDropTarget(
-    <div className={styles.container} onClick={rotate}>
-      <div className={['inner-container', rotated ? 'rotated' : ''].join(' ')}>
-        <Side {...sides[0]} />
-        <Side {...sides[1]} />
+class Block extends Component<ConnectedBlockProps, BlockState> {
+  constructor(props) {
+    super(props)
+    this.state = {
+      rotate: false
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const oldId:number = this.props.block.id
+    const newId:number = nextProps.block.id
+    const oldIndex:number = this.props.block.index
+    const newIndex:number = nextProps.block.index
+    const oldRot:boolean = !!this.props.block.rotated
+    const newRot:boolean = !!nextProps.block.rotated
+    if (oldId === newId && oldIndex === newIndex && oldRot !== newRot) {
+      this.setState({rotate: true})
+    }
+    else if (this.state.rotate) {
+      this.setState({rotate: false})
+    }
+  }
+
+  getClass():string {
+    const {rotate} = this.state
+    const {rotated} = this.props.block
+    const r1 = rotate ? 'rotate' : ''
+    const r2 = rotated ? 'rotated' : 'unrotated'
+    return ['inner-container', r1, r2].join(' ')
+  }
+
+  render() {
+    const {
+      block:{sides},
+      rotate,
+      connectDragSource,
+      connectDropTarget
+    } = this.props
+    return connectDragSource(connectDropTarget(
+      <div className={styles.container} onClick={rotate}>
+        <div className={this.getClass()}>
+          <Side {...sides[0]} />
+          <Side {...sides[1]} />
+        </div>
       </div>
-    </div>
-  ))
+    ))
+  }
+}
 
 const mapStateToProps = createStructuredSelector({
   block: getBlock
