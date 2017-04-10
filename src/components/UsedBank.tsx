@@ -10,7 +10,7 @@ const mapStateToProps = createStructuredSelector({
 })
 
 const UsedBank = ({blocks}) => (
-  <Bank title='Used'
+  <Bank title='Answer'
         used={true}
         className={styles.container}
         blocks={blocks}
