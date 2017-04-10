@@ -3,6 +3,24 @@
   "blocks": [{
     "sides": [
       {
+        "value": 100,
+        "unit": "m"
+      }
+    ]
+  }, {
+    "sides": [
+      {
+        "value": 1000,
+        "unit": "ms"
+      },
+      {
+        "value": 1,
+        "unit": "s"
+      }
+    ]
+  }, {
+    "sides": [
+      {
         "value": 60,
         "unit": "s"
       },
@@ -42,6 +60,50 @@
       {
         "value": 1,
         "unit": "day"
+      }
+    ]
+  }, {
+    "sides": [
+      {
+        "value": 10,
+        "unit": "mm"
+      },
+      {
+        "value": 1,
+        "unit": "cm"
+      }
+    ]
+  }, {
+    "sides": [
+      {
+        "value": 100,
+        "unit": "cm"
+      },
+      {
+        "value": 1,
+        "unit": "m"
+      }
+    ]
+  }, {
+    "sides": [
+      {
+        "value": 1000,
+        "unit": "m"
+      },
+      {
+        "value": 1,
+        "unit": "km"
+      }
+    ]
+  }, {
+    "sides": [
+      {
+        "value": 3000,
+        "unit": "m"
+      },
+      {
+        "value": 1,
+        "unit": "s"
       }
     ]
   }]

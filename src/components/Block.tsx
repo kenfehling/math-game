@@ -96,6 +96,10 @@ const blockTarget = {
   }
 }
 
+const SideWithoutUnit = () => (
+  <div className='side'><div className='text'>1</div></div>
+)
+
 const Side = ({value, unit:{shortName, pluralShortName, abbrev}}:IValue) => (
   <div className={`side ${abbrev}`}>
     <div className='text'>
@@ -146,7 +150,7 @@ class Block extends Component<ConnectedBlockProps, BlockState> {
       <div className={styles.container} onClick={rotate}>
         <div className={this.getClass()}>
           <Side {...sides[0]} />
-          <Side {...sides[1]} />
+          {sides.length > 1 ? <Side {...sides[1]} /> : <SideWithoutUnit />}
         </div>
       </div>
     ))

@@ -1,19 +1,19 @@
 import path from 'path'
 
 module.exports = {
-  entry: "./src/index.tsx",
+  entry: './src/index.tsx',
+  devtool: 'source-map',
   output: {
     path: path.resolve('static'),
     publicPath: '/static/',
     filename: 'bundle.js'
   },
-  devtool: 'source-map',
   module: {
     loaders: [
       {
         test: /\.(ts|tsx)?$/,
         loaders: [
-          "ts-loader"
+          'ts-loader'
         ]
       }, {
         test: /\.scss$/,

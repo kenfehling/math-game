@@ -2,10 +2,11 @@ import * as React from 'react'
 import {Component} from 'react'
 import UsedBank from '../components/UsedBank'
 import UnusedBank from '../components/UnusedBank'
+import ComputedTotal from '../components/ComputedTotal'
 import * as styles from './Problem.scss'
 import {connect} from 'react-redux'
 import {fetchProblem} from '../actions/ProblemActions'
-import {IBlock, IState} from '../model'
+import {IState} from '../model'
 
 interface ProblemProps {
   id: number
@@ -30,6 +31,7 @@ class Problem extends Component<ConnectedProblemProps, undefined> {
           {question}
         </div>
         <UsedBank />
+        <ComputedTotal />
         <UnusedBank />
       </div>
     )

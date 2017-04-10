@@ -1,0 +1,8 @@
+@import '../style/dimens';
+
+:local(.container) {
+  font-size: $block-text-size;
+  margin-left: 1ex;
+  margin-bottom: 1em;
+  font-weight: 500;
+}

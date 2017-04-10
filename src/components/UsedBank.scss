@@ -1,3 +1,5 @@
-:local(.container) {
+@import '../style/dimens';
 
+:local(.container) {
+  height: $block-width * 1.5;
 }
