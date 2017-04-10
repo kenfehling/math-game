@@ -3,6 +3,11 @@ import * as Units from '../constants/Units'
 import * as R from 'ramda'
 const units:IUnit[] = R.values(Units) as IUnit[]
 
+export interface UnitCount {
+  unit: IUnit,
+  count: number
+}
+
 const loadUnit = (unit:string):IUnit => {
   const result = units.find(u => u.abbrev === unit)
   if (!result) {
@@ -22,26 +27,41 @@ export const getNumerator = (block:IBlock):IValue =>
 export const getDenominator = (block:IBlock):IValue =>
   block.rotated ? block.sides[0] : block.sides[1]
 
-const cancel = (v1:IValue, v2:IValue) => v1.unit === v2.unit
+export const countUnits = (vs:IValue[]):UnitCount[] => {
+  const counts = R.countBy((v: IValue) => v.unit.abbrev, vs)
+  return R.keys(counts).map(key => ({unit: loadUnit(key), count: counts[key]}))
+}
+
+export const getUnitCount = (ucs:UnitCount[], unit:IUnit):number => {
+  const found:UnitCount|undefined = ucs.find((uc:UnitCount) => uc.unit === unit)
+  return found ? found.count : 0
+}
+
+export const cancel = (vs1:IValue[], vs2:IValue[]):UnitCount[] => {
+  const ucs1:UnitCount[] = countUnits(vs1)
+  const ucs2:UnitCount[] = countUnits(vs2)
+  return ucs1.reduce((ucs:UnitCount[], uc:UnitCount) => {
+    const onOtherSide:number = getUnitCount(ucs2, uc.unit)
+    const difference:number = uc.count - onOtherSide
+    return difference > 0 ? [...ucs, {...uc, count: difference}] : ucs
+  }, [])
+}
 
 const multiply = (terms:IValue[]) =>
     terms.reduce((sum:number, v:IValue) => sum * v.value, 1)
 
-const multiplyUnits = (terms:IValue[]) => {
-  if (terms.length > 1) {
-    return '(' + terms.map(t => t.unit.abbrev).join(' * ') + ')'
-  }
-  else if (terms.length === 1) {
-    return terms[0].unit.abbrev
-  }
-  else {
-    return ''
-  }
+const formatUnit = (uc:UnitCount):string => {
+  return uc.unit.abbrev + (uc.count > 1 ? '^' + uc.count : '')
+}
+
+const multiplyUnits = (terms:UnitCount[]) => {
+  const s:string = terms.map(formatUnit).join(' * ')
+  return terms.length > 1 ? '(' + s + ')' : s
 }
 
 const calculateUnit = (top:IValue[], bottom:IValue[]):string => {
-  const numerators = R.differenceWith(cancel, top, bottom)
-  const denominators = R.differenceWith(cancel, bottom, top)
+  const numerators:UnitCount[] = cancel(top, bottom)
+  const denominators:UnitCount[] = cancel(bottom, top)
   const numeratorUnit = multiplyUnits(numerators)
   const denominatorUnit = multiplyUnits(denominators)
   if (numeratorUnit === '') {
