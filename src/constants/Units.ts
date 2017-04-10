@@ -1,5 +1,14 @@
 import {IUnit, IUnitType} from '../model'
 
+export const milliseconds: IUnit = {
+  type: IUnitType.time,
+  longName: 'millisecond',
+  shortName: 'ms',
+  pluralLongName: 'milliseconds',
+  pluralShortName: 'ms',
+  abbrev: 'ms'
+}
+
 export const seconds: IUnit = {
   type: IUnitType.time,
   longName: 'second',

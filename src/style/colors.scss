@@ -1,11 +1,12 @@
 $app-bg-color: #EEE;
 $block-text-color: #222;
 
-$time: #33FF33;
-$distance: #ff8033;
+$no-unit: #888;
+$time: #44FF44;
+$distance: #ff9933;
 $volume: #6699FF;
 $mass: #ff9999;
-$factor: 20%;
+$factor: 15%;
 
 $unit-colors: (
   ms: lighten($time, $factor * 2),

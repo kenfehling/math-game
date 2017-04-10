@@ -1,7 +1,9 @@
 import {IBlock, IBlockDescription, IndexedBlock, IUnit, IValue} from '../model'
 import * as Units from '../constants/Units'
 import * as R from 'ramda'
+
 const units:IUnit[] = R.values(Units) as IUnit[]
+const exists:(x:any) => boolean = x => !!x
 
 export interface UnitCount {
   unit: IUnit,
@@ -17,9 +19,9 @@ const loadUnit = (unit:string):IUnit => {
 }
 
 export const loadBlocks = (blocks:IBlockDescription[]):IBlock[] =>
-    blocks.map(({sides}, i:number) =>
-      ({id: i + 1, sides: sides.map(({value, unit}) =>
-        ({value, unit: loadUnit(unit)}))}))
+  blocks.map(({sides}, i:number) =>
+    ({id: i + 1, sides: sides.map(({value, unit}) =>
+      ({value, unit: loadUnit(unit)}))}))
 
 export const getNumerator = (block:IBlock):IValue =>
   block.rotated ? block.sides[1] : block.sides[0]
@@ -69,7 +71,7 @@ const calculateUnit = (top:IValue[], bottom:IValue[]):string => {
       return ''
     }
     else {
-      return ' / ' + denominatorUnit
+      return denominatorUnit
     }
   }
   else {
@@ -98,8 +100,8 @@ const round = (value:number, places:number=3) => {
 }
 
 export const evaluateBlocks = (blocks:IBlock[]):string => {
-  const numerators:IValue[] = blocks.map(getNumerator)
-  const denominators:IValue[] = blocks.map(getDenominator)
+  const numerators:IValue[] = blocks.map(getNumerator).filter(exists)
+  const denominators:IValue[] = blocks.map(getDenominator).filter(exists)
   const value = multiply(numerators) / multiply(denominators)
   return round(value) + ' ' + calculateUnit(numerators, denominators)
 }
