@@ -1,10 +1,7 @@
-import path from 'path'
-
 module.exports = {
   entry: './src/index.tsx',
   devtool: 'source-map',
   output: {
-    path: path.resolve('static'),
     publicPath: '/static/',
     filename: 'bundle.js'
   },
