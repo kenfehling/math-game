@@ -4,10 +4,10 @@ $bank-border-color: #BBB;
 $default-text-color: #222;
 $block-text-color: #222;
 
-$time: #44FF44;
-$distance: #FF9944;
-$volume: #66AAFF;
-$mass: #FF7799;
+$time: #4F4;
+$distance: #F94;
+$volume: #6AF;
+$mass: #F57;
 $factor: 15%;
 
 $unit-colors: (
@@ -38,9 +38,9 @@ $unit-colors: (
   quart: $volume,
   gal: darken($distance, $factor),
 
-  mg: lighten($mass, $factor * 1.5),
-  g: lighten($mass, $factor),
-  oz: $mass,
-  lb: darken($mass, $factor),
-  kg: darken($mass, $factor * 1.1)
+  mg: lighten($mass, $factor * 2),
+  g: lighten($mass, $factor * 1.5),
+  oz: lighten($mass, $factor),
+  lb: $mass,
+  kg: darken($mass, $factor * 0.25)
 )
