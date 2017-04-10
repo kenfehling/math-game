@@ -2,7 +2,7 @@ import {
   RECEIVE_PROBLEM, ROTATE_BLOCK, MOVE_BLOCK, SWITCH_BLOCK
 } from '../constants/ActionTypes'
 import {fetch} from '../utils/api';
-import {IBlock, IProblemDescription} from '../model'
+import {IProblemDescription} from '../model'
 
 export interface IAction {type: string}
 export type ReceiveProblem = IAction & IProblemDescription

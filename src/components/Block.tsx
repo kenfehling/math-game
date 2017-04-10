@@ -97,11 +97,11 @@ const blockTarget = {
 }
 
 const SideWithoutUnit = () => (
-  <div className='side'><div className='text'>1</div></div>
+  <div className='side no-unit'><div className='text'>1</div></div>
 )
 
 const Side = ({value, unit:{shortName, pluralShortName, abbrev}}:IValue) => (
-  <div className={`side ${abbrev}`}>
+  <div className={`side ${abbrev.replace(' ', '-')}`}>
     <div className='text'>
       {value} {value === 1 ? shortName : pluralShortName}
     </div>

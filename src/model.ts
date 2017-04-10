@@ -2,7 +2,8 @@ export enum IUnitType {
   time,
   distance,
   volume,
-  mass
+  mass,
+  algebraic
 }
 
 export interface IUnit {

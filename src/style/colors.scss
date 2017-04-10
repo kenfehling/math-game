@@ -4,14 +4,18 @@ $bank-border-color: #BBB;
 $default-text-color: #222;
 $block-text-color: #222;
 
-$no-unit: #888;
 $time: #44FF44;
-$distance: #ff9933;
-$volume: #6699FF;
-$mass: #ff9999;
+$distance: #FF9944;
+$volume: #66AAFF;
+$mass: #FF7799;
 $factor: 15%;
 
 $unit-colors: (
+  no-unit: #FFF,
+  x: #DDD,
+  y: #BBB,
+  z: #999,
+
   ms: lighten($time, $factor * 2),
   s: lighten($time, $factor * 1.5),
   min: lighten($time, $factor),
@@ -21,10 +25,22 @@ $unit-colors: (
   yr: darken($time, $factor * 2),
 
   mm: lighten($distance, $factor * 2),
-  cm: lighten($distance, $factor * 1.5),
-  in: lighten($distance, $factor),
-  ft: $distance,
-  m: darken($distance, $factor),
-  km: darken($distance, $factor * 1.5),
-  mile: darken($distance, $factor * 2)
+  cm: lighten($distance, $factor * 1.75),
+  in: lighten($distance, $factor * 1.5),
+  ft: lighten($distance, $factor),
+  m: $distance,
+  km: darken($distance, $factor),
+  mile: darken($distance, $factor * 1.5),
+
+  mL: lighten($volume, $factor * 2),
+  fl-oz: lighten($volume, $factor * 1.5),
+  cup: lighten($volume, $factor),
+  quart: $volume,
+  gal: darken($distance, $factor),
+
+  mg: lighten($mass, $factor * 1.5),
+  g: lighten($mass, $factor),
+  oz: $mass,
+  lb: darken($mass, $factor),
+  kg: darken($mass, $factor * 1.1)
 )

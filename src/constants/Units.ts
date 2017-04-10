@@ -1,5 +1,32 @@
 import {IUnit, IUnitType} from '../model'
 
+export const x: IUnit = {
+  type: IUnitType.algebraic,
+  longName: 'x',
+  shortName: 'x',
+  pluralLongName: 'x',
+  pluralShortName: 'x',
+  abbrev: 'x'
+}
+
+export const y: IUnit = {
+  type: IUnitType.algebraic,
+  longName: 'y',
+  shortName: 'y',
+  pluralLongName: 'y',
+  pluralShortName: 'y',
+  abbrev: 'y'
+}
+
+export const z: IUnit = {
+  type: IUnitType.algebraic,
+  longName: 'z',
+  shortName: 'z',
+  pluralLongName: 'z',
+  pluralShortName: 'z',
+  abbrev: 'z'
+}
+
 export const milliseconds: IUnit = {
   type: IUnitType.time,
   longName: 'millisecond',
@@ -121,4 +148,94 @@ export const miles: IUnit = {
   pluralLongName: 'miles',
   pluralShortName: 'miles',
   abbrev: 'mi'
+}
+
+export const milliliters: IUnit = {
+  type: IUnitType.volume,
+  longName: 'milliliter',
+  shortName: 'mL',
+  pluralLongName: 'milliliters',
+  pluralShortName: 'mL',
+  abbrev: 'mL'
+}
+
+export const fluid_ounces: IUnit = {
+  type: IUnitType.volume,
+  longName: 'fluid ounce',
+  shortName: 'fl oz',
+  pluralLongName: 'fluid ounces',
+  pluralShortName: 'fl oz',
+  abbrev: 'fl oz'
+}
+
+export const cups: IUnit = {
+  type: IUnitType.volume,
+  longName: 'cup',
+  shortName: 'cup',
+  pluralLongName: 'cups',
+  pluralShortName: 'cups',
+  abbrev: 'cup'
+}
+
+export const quarts: IUnit = {
+  type: IUnitType.volume,
+  longName: 'quart',
+  shortName: 'qt',
+  pluralLongName: 'quarts',
+  pluralShortName: 'qts',
+  abbrev: 'qt'
+}
+
+export const gallons: IUnit = {
+  type: IUnitType.volume,
+  longName: 'gallon',
+  shortName: 'gal',
+  pluralLongName: 'gallons',
+  pluralShortName: 'gal',
+  abbrev: 'gal'
+}
+
+export const milligrams: IUnit = {
+  type: IUnitType.mass,
+  longName: 'milligram',
+  shortName: 'mg',
+  pluralLongName: 'milligrams',
+  pluralShortName: 'mg',
+  abbrev: 'mg'
+}
+
+export const grams: IUnit = {
+  type: IUnitType.mass,
+  longName: 'gram',
+  shortName: 'g',
+  pluralLongName: 'grams',
+  pluralShortName: 'g',
+  abbrev: 'g'
+}
+
+export const ounces: IUnit = {
+  type: IUnitType.mass,
+  longName: 'ounce',
+  shortName: 'oz',
+  pluralLongName: 'ounces',
+  pluralShortName: 'oz',
+  abbrev: 'oz'
+}
+
+export const pounds: IUnit = {
+  type: IUnitType.mass,
+  longName: 'pound',
+  shortName: 'lb',
+  pluralLongName: 'pounds',
+  pluralShortName: 'lbs',
+  abbrev: 'lb'
+}
+
+export const kilograms: IUnit = {
+  type: IUnitType.mass,
+  longName: 'kilogram',
+  shortName: 'kg',
+  pluralLongName: 'kilogramss',
+  pluralShortName: 'kg',
+  abbrev: 'kg'
 }
