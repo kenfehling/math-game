@@ -13,14 +13,9 @@
     font-size: $small-text-size;
     font-weight: 400;
     padding: 6px 7px;
-    position: absolute;
-    z-index: 1;
   }
 
   .blocks {
-    padding: 10px 1%;
-    position: absolute;
-    z-index: 2;
-    top: 15px;
+    padding: 3px 1%;
   }
 }

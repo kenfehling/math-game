@@ -1,4 +1,7 @@
+@import '../style/dimens';
+
 :local(.container) {
+  margin-top: $nav-height;
   .question {
     font-weight: 500;
     margin-bottom: 14px;

@@ -6,10 +6,21 @@ import * as bowser from 'bowser'
 import * as styles from './App.scss'
 import Problem from './Problem'
 import {ComponentClass} from 'react'
+import {slide as SlideMenu} from 'react-burger-menu'
 
 const App = () => (
   <div className={styles.container}>
-    <Problem id={1} />
+    <div className='nav'>
+      <h1 className='title'>Math Blocks</h1>
+      <SlideMenu>
+        <a id='home' className='menu-item' href='/'>Home</a>
+        <a id='about' className='menu-item' href='/about'>About</a>
+        <a id='contact' className='menu-item' href='/contact'>Contact</a>
+      </SlideMenu>
+    </div>
+    <div className='content'>
+      <Problem id={1} />
+    </div>
   </div>
 )
 

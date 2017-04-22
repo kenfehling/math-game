@@ -11,7 +11,55 @@ html, body {
   font-size: $default-text-size;
   background-color: $app-bg-color;
   color: $default-text-color;
-  height: 100vh;
-  padding: 15px 2%;
-  box-sizing: border-box;
+
+  .nav {
+    position: fixed;
+    z-index: 2;
+    width: 100%;
+    height: $nav-height;
+    background-image: linear-gradient(to bottom, $nav-bg-color-1, $nav-bg-color-2);
+    border-bottom: thin solid darken($nav-bg-color-2, 4%);
+    color: $nav-fg-color;
+
+    .bm-burger-button {
+      position: fixed;
+      width: 20px;
+      height: 17px;
+      left: 2%;
+      top: 11px;
+
+      button {
+        cursor: pointer;
+      }
+    }
+
+    .bm-burger-bars {
+      background: $nav-fg-color;
+    }
+
+    .bm-menu {
+      background: #373a47;
+
+      a {
+        color: #b8b7ad;
+
+        &:hover,
+        &:focus {
+          color: #c94e50;
+        }
+      }
+    }
+
+    .title {
+      font-size: $nav-title-text-size;
+      font-weight: 600;
+      text-align: center;
+      margin: 0;
+      line-height: $nav-height * 0.98;
+    }
+  }
+
+  .content {
+    padding: 15px 2%;
+  }
 }
