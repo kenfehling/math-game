@@ -26,7 +26,7 @@ const ProblemSetGroup = ({name, sets}) => (
 )
 
 const ProblemSetLeaf = ({name, problems}) => (
-  <TreeView key={name} nodeLabel={label(name)} defaultCollapsed={true}>
+  <TreeView key={name} nodeLabel={label(name)} defaultCollapsed={false}>
     {problems.map(id =>
       <a key={id} className='info'>Problem #{id}</a>
     )}
@@ -39,6 +39,18 @@ const ProblemSet = ({set}) => set.sets ?
 
 const ConnectedSideMenu = ({className, problemSet}:ConnectedSideMenuProps) => (
   <div className={`${styles.container} ${className}`}>
+    <div className='title'>Menu</div>
+    <div className='menu'>
+      <Link to='/'>
+        <i className='fa fa-home' />
+        Home
+      </Link>
+      <Link to='/about'>
+        <i className='fa fa-question-circle' />
+        About
+      </Link>
+    </div>
+    <div className='title'>Problem sets</div>
     <div className='tree'>
       {problemSet && <ProblemSet set={problemSet} />}
     </div>

@@ -2,32 +2,65 @@
 @import '../style/dimens';
 @import '../style/utils';
 
+$icon-margin-right: 1em;
+
 :local(.container).desktop {
   width: $side-menu-width;
   height: 100vh;
   float: left;
-  padding-top: $nav-height;
   box-sizing: border-box;
+  padding-top: $nav-height;
 }
 
 :local(.container), .bm-menu {
+  color: $side-menu-fg-color;
   background: $side-menu-bg-color;
+  padding-left: 10px;
+  padding-right: 10px;
+
+  .title {
+    padding-top: 22px;
+    font-weight: bold;
+    margin-bottom: 12px;
+    width: 100%;
+    text-align: center;
+    padding-right: 1em;
+    box-sizing: border-box;
+  }
+
   a {
-    display: block;
+    cursor: pointer;
     color: $side-menu-fg-color;
     text-decoration: none;
+    line-height: 22px;
+    &:hover, &:focus {
+      background-color: $side-menu-fg-color;
+      color: $side-menu-bg-color;
+    }
+  }
+
+  a, .tree {
+    padding: 0 5px;
+  }
+
+  .menu {
+    a {
+      display: block;
+      margin: 3px 20px 3px 0;
+      i {
+        margin-right: $icon-margin-right * 0.75;
+      }
+    }
   }
 
   .tree {
-    padding: 10px;
-    color: $side-menu-fg-color;
     .tree-view {
-      overflow-y: hidden;
+      overflow-y: auto;
     }
 
     /* style for the children nodes container */
-    .tree-view_children, .info {
-      margin-left: 16px;
+    .tree-view_children {
+      margin-left: 20px;
     }
 
     .tree-view_children-collapsed {
@@ -36,57 +69,38 @@
 
     .tree-view_arrow {
       cursor: pointer;
-      margin-right: 6px;
+      margin-right: $icon-margin-right;
       display: inline-block;
       @include no-select()
     }
 
     .tree-view_arrow:after {
       content: '▾';
+      font-size: 1em;
     }
 
     /* rotate the triangle to close it */
     .tree-view_arrow-collapsed {
-      -webkit-transform: rotate(-90deg);
-      -moz-transform: rotate(-90deg);
-      -ms-transform: rotate(-90deg);
-      transform: rotate(-90deg);
+      @include transform(rotate(-90deg))
     }
 
     .node {
-      -moz-transition: all 0.5s;
-      -o-transition: all 0.5s;
-      -ms-transition: all 0.5s;
-      -webkit-transition: all 0.5s;
-      transition: all 0.5s;
+      @include transition(all, 0.5s);
       border-radius: 3px;
       line-height: 24px;
       @include no-highlight();
     }
 
     .info {
-      cursor: pointer;
-
-      &:hover, &:focus {
-        background-color: $side-menu-fg-color;
-        color: $side-menu-bg-color;
-      }
+      margin-left: 20px;
     }
 
     .info, .node {
-      padding: 2px 10px 2px 5px;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
+      @include no-select();
     }
 
     .tree-view_arrow {
-      -moz-transition: all 0.1s;
-      -o-transition: all 0.1s;
-      -ms-transition: all 0.1s;
-      -webkit-transition: all 0.1s;
-      transition: all 0.1s;
+      @include transition(all, 0.5s);
     }
   }
 }
