@@ -1,28 +1,43 @@
 import * as React from 'react'
+import {Component} from 'react'
 import * as HTML5Backend from 'react-dnd-html5-backend'
 import * as TouchBackend from 'react-dnd-touch-backend'
 import {DragDropContext} from 'react-dnd'
+import {connect} from 'react-redux'
+import {Route} from 'react-router-dom'
 import * as bowser from 'bowser'
 import * as styles from './App.scss'
-import Problem from './Problem'
+import Navigation from '../components/Navigation'
+import Problem from '../components/Problem'
 import {ComponentClass} from 'react'
-import {slide as SlideMenu} from 'react-burger-menu'
+import {fetchProblems} from '../actions/ProblemActions'
 
-const App = () => (
-  <div className={styles.container}>
-    <div className='nav'>
-      <h1 className='title'>Math Blocks</h1>
-      <SlideMenu>
-        <a id='home' className='menu-item' href='/'>Home</a>
-        <a id='about' className='menu-item' href='/about'>About</a>
-        <a id='contact' className='menu-item' href='/contact'>Contact</a>
-      </SlideMenu>
-    </div>
-    <div className='content'>
-      <Problem id={1} />
-    </div>
-  </div>
-)
-
+const cssClass = bowser.mobile ? 'mobile' : 'desktop'
 const backend = bowser.mobile || bowser.tablet ? TouchBackend : HTML5Backend
-export default DragDropContext(backend)(App) as ComponentClass<{}>
+
+interface ConnectedAppProps {
+  fetchProblems: () => void
+}
+
+class App extends Component<ConnectedAppProps, undefined> {
+  constructor(props) {
+    super(props)
+    props.fetchProblems()
+  }
+
+  render() {
+    return (
+      <div className={styles.container}>
+        <Navigation className={cssClass} />
+        <div className={`content ${cssClass}`}>
+          <Problem id={1} />
+        </div>
+      </div>
+    )
+  }
+}
+
+export default connect(
+  () => ({}),
+  {fetchProblems}
+)(DragDropContext(backend)(App) as ComponentClass<{}>)

@@ -1,8 +1,8 @@
 import * as React from 'react'
 import {Component} from 'react'
-import UsedBank from '../components/UsedBank'
-import UnusedBank from '../components/UnusedBank'
-import ComputedTotal from '../components/ComputedTotal'
+import UsedBank from './UsedBank'
+import UnusedBank from './UnusedBank'
+import ComputedTotal from './ComputedTotal'
 import * as styles from './Problem.scss'
 import {connect} from 'react-redux'
 import {fetchProblem} from '../actions/ProblemActions'
@@ -39,7 +39,7 @@ class Problem extends Component<ConnectedProblemProps, undefined> {
 }
 
 const mapStateToProps = (state:IState) => ({
-  question: state.question
+  question: state.problem.question
 })
 
 const mapDispatchToProps = (dispatch, ownProps:ProblemProps) => ({

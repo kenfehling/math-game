@@ -34,9 +34,13 @@ export type IndexedBlock = IBlock & {
 export interface IProblem {
   question: string
   blocks: IBlock[]
+  answer: any  // TODO: Define answer
 }
 
-export type IState = IProblem  // Eventually may have score, etc.
+export interface IState {
+  problem: IProblem,
+  problemSet: IProblemSet
+}
 
 
 // Describes the data that gets read in from JSON
@@ -54,3 +58,7 @@ export interface IProblemDescription {
   question: string
   blocks: IBlockDescription[]
 }
+
+export type IProblemSet = { name: string } & (
+  { problems: number[] } | { sets: IProblemSet[] }
+)

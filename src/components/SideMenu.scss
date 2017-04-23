@@ -1,0 +1,97 @@
+@import '../style/colors';
+@import '../style/dimens';
+@import '../style/utils';
+
+:local(.container).desktop {
+  width: $side-menu-width;
+  height: 100vh;
+  float: left;
+  padding-top: $nav-height;
+  box-sizing: border-box;
+}
+
+:local(.container), .bm-menu {
+  background: $side-menu-bg-color;
+  a {
+    display: block;
+    color: $side-menu-fg-color;
+    text-decoration: none;
+  }
+
+  .tree {
+    padding: 10px;
+    color: $side-menu-fg-color;
+    .tree-view {
+      overflow-y: hidden;
+    }
+
+    /* style for the children nodes container */
+    .tree-view_children, .info {
+      margin-left: 16px;
+    }
+
+    .tree-view_children-collapsed {
+      height: 0;
+    }
+
+    .tree-view_arrow {
+      cursor: pointer;
+      margin-right: 6px;
+      display: inline-block;
+      @include no-select()
+    }
+
+    .tree-view_arrow:after {
+      content: '▾';
+    }
+
+    /* rotate the triangle to close it */
+    .tree-view_arrow-collapsed {
+      -webkit-transform: rotate(-90deg);
+      -moz-transform: rotate(-90deg);
+      -ms-transform: rotate(-90deg);
+      transform: rotate(-90deg);
+    }
+
+    .node {
+      -moz-transition: all 0.5s;
+      -o-transition: all 0.5s;
+      -ms-transition: all 0.5s;
+      -webkit-transition: all 0.5s;
+      transition: all 0.5s;
+      border-radius: 3px;
+      line-height: 24px;
+      @include no-highlight();
+    }
+
+    .info {
+      cursor: pointer;
+
+      &:hover, &:focus {
+        background-color: $side-menu-fg-color;
+        color: $side-menu-bg-color;
+      }
+    }
+
+    .info, .node {
+      padding: 2px 10px 2px 5px;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    .tree-view_arrow {
+      -moz-transition: all 0.1s;
+      -o-transition: all 0.1s;
+      -ms-transition: all 0.1s;
+      -webkit-transition: all 0.1s;
+      transition: all 0.1s;
+    }
+  }
+}
+
+.bm-menu-wrap {
+  z-index: 3 !important;
+  width: $side-menu-width !important;
+}
