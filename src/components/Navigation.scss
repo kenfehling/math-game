@@ -1,22 +1,56 @@
 @import '../style/colors';
 @import '../style/dimens';
 
+$logo-size: round($nav-height * 2/3);
+$logo-margin: floor(($nav-height - $logo-size) / 2);
+
 :local(.container) {
   .nav {
     position: fixed;
     z-index: 2;
     width: 100%;
     height: $nav-height;
-    background-image: linear-gradient(to bottom, $nav-bg-color-1, $nav-bg-color-2);
-    border-bottom: thin solid darken($nav-bg-color-2, 4%);
+    background-color: $nav-bg-color;
+    border-bottom: thin solid darken($nav-bg-color, 4%);
     color: $nav-fg-color;
 
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    
     .title {
       font-size: $nav-title-text-size;
-      font-weight: 600;
-      text-align: center;
       margin: 0;
       line-height: $nav-height * 0.98;
+    }
+  }
+}
+
+:local(.container).mobile {
+  .nav {
+    .icon {
+      display: none;
+    }
+    .title {
+      font-weight: 600;
+      text-align: center;
+    }
+  }
+}
+
+:local(.container).desktop {
+  .nav {
+    display: flex;
+    .icon {
+      margin-left: 20px;
+      width: $logo-size;
+      height: $logo-size;
+      margin-top: $logo-margin;
+    }
+    .title {
+      font-weight: 400;
+      margin-left: 10px;
     }
   }
 }

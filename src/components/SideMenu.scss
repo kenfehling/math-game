@@ -33,7 +33,7 @@ $icon-margin-right: 1em;
     color: $side-menu-fg-color;
     text-decoration: none;
     line-height: 22px;
-    &:hover, &:focus {
+    &:hover {
       background-color: $side-menu-fg-color;
       color: $side-menu-bg-color;
     }

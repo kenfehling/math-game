@@ -28,7 +28,9 @@ const ProblemSetGroup = ({name, sets}) => (
 const ProblemSetLeaf = ({name, problems}) => (
   <TreeView key={name} nodeLabel={label(name)} defaultCollapsed={false}>
     {problems.map(id =>
-      <a key={id} className='info'>Problem #{id}</a>
+      <Link to={`/problems/${id}`} key={id} className='info'>
+        Problem #{id}
+      </Link>
     )}
   </TreeView>
 )

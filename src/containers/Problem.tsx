@@ -1,15 +1,15 @@
 import * as React from 'react'
 import {Component} from 'react'
-import UsedBank from './UsedBank'
-import UnusedBank from './UnusedBank'
-import ComputedTotal from './ComputedTotal'
+import UsedBank from '../components/UsedBank'
+import UnusedBank from '../components/UnusedBank'
+import ComputedTotal from '../components/ComputedTotal'
 import * as styles from './Problem.scss'
 import {connect} from 'react-redux'
 import {fetchProblem} from '../actions/ProblemActions'
 import {IState} from '../model'
 
 interface ProblemProps {
-  id: number
+  match: {params: {id: number}}
 }
 
 type ConnectedProblemProps = ProblemProps & {
@@ -43,7 +43,7 @@ const mapStateToProps = (state:IState) => ({
 })
 
 const mapDispatchToProps = (dispatch, ownProps:ProblemProps) => ({
-  load: () => dispatch(fetchProblem(ownProps.id))
+  load: () => dispatch(fetchProblem(ownProps.match.params.id))
 })
 
 const mergeProps = (stateProps, dispatchProps, ownProps) => ({

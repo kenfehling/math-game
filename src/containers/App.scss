@@ -4,6 +4,7 @@
 html, body {
   margin: 0;
   padding: 0;
+  background-color: $app-bg-color;
 }
 
 :local(.container) {
@@ -12,13 +13,16 @@ html, body {
   height: 100vh;
   background-color: $app-bg-color;
   color: $default-text-color;
+  box-sizing: border-box;
 
   .content {
-    padding: 15px 2%;
+    padding: $nav-height + 15px 2% 15px 2%;
     box-sizing: border-box;
   }
 
   .content.desktop {
     margin-left: $side-menu-width;
+    height: 100vh;
+    overflow: scroll;
   }
 }

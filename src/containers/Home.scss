@@ -1,0 +1,11 @@
+@import '../style/dimens';
+
+:local(.container) {
+  .categories {
+    .category {
+      display: inline-block;
+      max-width: 310px;
+      margin: 5px;
+    }
+  }
+}

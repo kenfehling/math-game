@@ -1,15 +1,18 @@
 import * as React from 'react'
-import {Component} from 'react'
+import {Component, ComponentClass} from 'react'
+import {HashRouter as Router} from 'react-router-dom'
 import * as HTML5Backend from 'react-dnd-html5-backend'
 import * as TouchBackend from 'react-dnd-touch-backend'
 import {DragDropContext} from 'react-dnd'
 import {connect} from 'react-redux'
 import {Route} from 'react-router-dom'
+import About from './About'
+import Problem from './Problem'
+import Home from './Home'
 import * as bowser from 'bowser'
 import * as styles from './App.scss'
 import Navigation from '../components/Navigation'
-import Problem from '../components/Problem'
-import {ComponentClass} from 'react'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import {fetchProblems} from '../actions/ProblemActions'
 
 const cssClass = bowser.mobile ? 'mobile' : 'desktop'
@@ -27,12 +30,22 @@ class App extends Component<ConnectedAppProps, undefined> {
 
   render() {
     return (
-      <div className={styles.container}>
-        <Navigation className={cssClass} />
-        <div className={`content ${cssClass}`}>
-          <Problem id={1} />
+      <MuiThemeProvider>
+        <div className={styles.container}>
+          <Router>
+            <div>
+              <Navigation className={cssClass} />
+              <div className={`content ${cssClass}`}>
+
+                  <Route path='/' exact component={Home} />
+                  <Route path='/about' component={About} />
+                  <Route path='/problems/:id' component={Problem} />
+
+              </div>
+            </div>
+          </Router>
         </div>
-      </div>
+      </MuiThemeProvider>
     )
   }
 }

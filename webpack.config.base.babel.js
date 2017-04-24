@@ -1,3 +1,5 @@
+import path from 'path'
+
 module.exports = {
   entry: './src/index.tsx',
   devtool: 'source-map',
@@ -20,11 +22,20 @@ module.exports = {
           'css-loader?sourceMap',
           'sass-loader'
         ]
+      }, {
+        test: /\.(png|jp?g|svg)$/i,
+        exclude: /node_modules/,
+        loaders: [
+          "url-loader?limit=10000000"
+        ]
       }
     ]
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.ts', '.tsx']
+    extensions: ['.js', '.jsx', '.ts', '.tsx'],
+    alias: {
+      img: path.join(__dirname, 'img')
+    }
   },
   node: { Buffer: false }
 };
