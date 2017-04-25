@@ -8,7 +8,7 @@ html, body {
 }
 
 :local(.container) {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: Roboto, sans-serif;
   font-size: $default-text-size;
   height: 100vh;
   background-color: $app-bg-color;

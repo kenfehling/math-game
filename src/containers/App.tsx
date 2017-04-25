@@ -36,11 +36,9 @@ class App extends Component<ConnectedAppProps, undefined> {
             <div>
               <Navigation className={cssClass} />
               <div className={`content ${cssClass}`}>
-
                   <Route path='/' exact component={Home} />
                   <Route path='/about' component={About} />
                   <Route path='/problems/:id' component={Problem} />
-
               </div>
             </div>
           </Router>

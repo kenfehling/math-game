@@ -49,8 +49,9 @@ $logo-margin: floor(($nav-height - $logo-size) / 2);
       margin-top: $logo-margin;
     }
     .title {
+      font-size: 18px;
       font-weight: 400;
-      margin-left: 10px;
+      margin-left: 12px;
     }
   }
 }
@@ -60,7 +61,7 @@ $logo-margin: floor(($nav-height - $logo-size) / 2);
   z-index: 2 !important;
   width: 20px;
   height: 17px;
-  left: 2%;
+  left: 14px;
   top: 11px;
 
   button {

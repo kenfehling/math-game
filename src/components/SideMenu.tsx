@@ -44,11 +44,11 @@ const ConnectedSideMenu = ({className, problemSet}:ConnectedSideMenuProps) => (
     <div className='title'>Menu</div>
     <div className='menu'>
       <Link to='/'>
-        <i className='fa fa-home' />
+        <span className='icon icon-home' />
         Home
       </Link>
       <Link to='/about'>
-        <i className='fa fa-question-circle' />
+        <span className='icon icon-info' />
         About
       </Link>
     </div>
