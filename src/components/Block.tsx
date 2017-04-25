@@ -9,6 +9,11 @@ import {BLOCK} from '../constants/ItemTypes'
 import {findDOMNode} from 'react-dom'
 import {createStructuredSelector} from 'reselect'
 import {getBlock} from '../selectors'
+import DragPreview from './DragPreview'
+import * as bowser from 'bowser'
+
+const isTouch = bowser.mobile || bowser.tablet
+const noop = () => {}
 
 interface BlockProps {
   id: number
@@ -20,6 +25,8 @@ interface ConnectedBlockProps {
   move: (id:number, toIndex) => void
   connectDragSource: Function
   connectDropTarget: Function
+  connectDragPreview: Function
+  isDragging: boolean
 }
 
 interface BlockState {
@@ -41,6 +48,7 @@ const blockSource = {
 function sourceCollect(connect, monitor) {
   return {
     connectDragSource: connect.dragSource(),
+    connectDragPreview: connect.dragPreview(),
     isDragging: monitor.isDragging()
   }
 }
@@ -108,6 +116,13 @@ const Side = ({value, unit:{shortName, pluralShortName, abbrev}}:IValue) => (
   </div>
 )
 
+const BaseBlock = ({sides, className}) => (
+  <div className={className}>
+    <Side {...sides[0]} />
+    {sides.length > 1 ? <Side {...sides[1]} /> : <SideWithoutUnit />}
+  </div>
+)
+
 class Block extends Component<ConnectedBlockProps, BlockState> {
   constructor(props) {
     super(props)
@@ -144,16 +159,30 @@ class Block extends Component<ConnectedBlockProps, BlockState> {
       block:{sides},
       rotate,
       connectDragSource,
-      connectDropTarget
+      connectDropTarget,
     } = this.props
-    return connectDragSource(connectDropTarget(
-      <div className={styles.container} onClick={rotate}>
-        <div className={this.getClass()}>
-          <Side {...sides[0]} />
-          {sides.length > 1 ? <Side {...sides[1]} /> : <SideWithoutUnit />}
+    if (isTouch) {
+      return connectDragSource(<span>
+      <DragPreview {...this.props}>
+        <div className={styles.container} onClick={noop}>
+          <BaseBlock sides={sides} className={this.getClass()} />
         </div>
-      </div>
-    ))
+      </DragPreview>
+        {connectDropTarget(
+          <div className={styles.container} onClick={rotate}>
+            <BaseBlock sides={sides} className={this.getClass()} />
+          </div>
+        )}
+
+    </span>)
+    }
+    else {
+      return connectDragSource(connectDropTarget(
+        <div className={styles.container} onClick={rotate}>
+          <BaseBlock sides={sides} className={this.getClass()} />
+        </div>
+      ))
+    }
   }
 }
 

@@ -84,49 +84,5 @@
         "unit": "s"
       }
     ]
-  }, {
-    "sides": [
-      {
-        "value": 8,
-        "unit": "fl oz"
-      },
-      {
-        "value": 1,
-        "unit": "cup"
-      }
-    ]
-  }, {
-    "sides": [
-      {
-        "value": 1,
-        "unit": "x"
-      },
-      {
-        "value": 3,
-        "unit": "y"
-      }
-    ]
-  }, {
-    "sides": [
-      {
-        "value": 1,
-        "unit": "kg"
-      },
-      {
-        "value": 1000,
-        "unit": "g"
-      }
-    ]
-  }, {
-    "sides": [
-      {
-        "value": 1000,
-        "unit": "mg"
-      },
-      {
-        "value": 1,
-        "unit": "g"
-      }
-    ]
   }]
 }

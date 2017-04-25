@@ -5,7 +5,6 @@
   border: 1px solid $bank-border-color;
   border-radius: 6px;
   margin: 0.5em 0;
-  position: relative;
   background-color: $bank-bg-color;
 
   .title {
@@ -13,14 +12,9 @@
     font-size: $small-text-size;
     font-weight: 400;
     padding: 6px 7px;
-    position: absolute;
-    z-index: 1;
   }
 
   .blocks {
-    padding: 10px 1%;
-    position: absolute;
-    z-index: 2;
-    top: 15px;
+    padding: 3px 8px;
   }
 }

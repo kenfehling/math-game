@@ -9,7 +9,7 @@ import {fetchProblem} from '../actions/ProblemActions'
 import {IState} from '../model'
 
 interface ProblemProps {
-  id: number
+  match: {params: {id: number}}
 }
 
 type ConnectedProblemProps = ProblemProps & {
@@ -39,11 +39,11 @@ class Problem extends Component<ConnectedProblemProps, undefined> {
 }
 
 const mapStateToProps = (state:IState) => ({
-  question: state.question
+  question: state.problem.question
 })
 
 const mapDispatchToProps = (dispatch, ownProps:ProblemProps) => ({
-  load: () => dispatch(fetchProblem(ownProps.id))
+  load: () => dispatch(fetchProblem(ownProps.match.params.id))
 })
 
 const mergeProps = (stateProps, dispatchProps, ownProps) => ({

@@ -4,14 +4,25 @@
 html, body {
   margin: 0;
   padding: 0;
+  background-color: $app-bg-color;
 }
 
 :local(.container) {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: Roboto, sans-serif;
   font-size: $default-text-size;
+  height: 100vh;
   background-color: $app-bg-color;
   color: $default-text-color;
-  height: 100vh;
-  padding: 15px 2%;
   box-sizing: border-box;
+
+  .content {
+    padding: $nav-height + 15px 2% 15px 2%;
+    box-sizing: border-box;
+  }
+
+  .content.desktop {
+    margin-left: $side-menu-width;
+    height: 100vh;
+    overflow: scroll;
+  }
 }

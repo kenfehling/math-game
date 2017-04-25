@@ -1,0 +1,32 @@
+@import '../style/dimens';
+
+$card-margin: 5px;
+
+:local(.container) {
+  padding: 0 10px;
+  p {
+    padding-left: $card-margin;
+    padding-right: $card-margin;
+  }
+  .categories {
+    width: 100%;
+    .category {
+      width: 240px;
+      display: inline-block;
+      margin: $card-margin;
+
+      a {
+        text-decoration: inherit;
+      }
+      .beginner {
+        color: green !important;
+      }
+      .intermediate {
+        color: #C90 !important;
+      }
+      .advanced {
+        color: #C00 !important;
+      }
+    }
+  }
+}

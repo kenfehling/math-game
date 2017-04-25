@@ -1,0 +1,34 @@
+@mixin no-select() {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+@mixin no-highlight() {
+  -webkit-tap-highlight-color: transparent;
+
+  &:active {
+    outline: none;
+    border: none;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+@mixin transition($property, $time) {
+  -moz-transition: $property $time;
+  -o-transition: $property $time;
+  -ms-transition: $property $time;
+  -webkit-transition: $property $time;
+  transition: $property $time;
+}
+
+@mixin transform($t) {
+  -webkit-transform: $t;
+  -moz-transform: $t;
+  -ms-transform: $t;
+  transform: $t;
+}

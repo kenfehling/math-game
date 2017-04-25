@@ -3,7 +3,7 @@ import {IBlock, IndexedBlock, IState} from './model'
 import {evaluateBlocks, findBlock, indexBlocks} from './utils/blocks'
 
 const getBlocks = (state:IState) => {
-  return state.blocks
+  return state.problem.blocks
 }
 const getId = (_, props) => props.id
 

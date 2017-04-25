@@ -19,12 +19,18 @@
   "dependencies": {
     "bowser": "^1.6.1",
     "isomorphic-fetch": "^2.2.1",
+    "material-ui": "^0.17.4",
     "ramda": "^0.23.0",
     "react": "^15.5.3",
+    "react-burger-menu": "^2.0.0",
     "react-dnd": "^2.3.0",
     "react-dnd-html5-backend": "^2.3.0",
     "react-dnd-touch-backend": "^0.3.6",
     "react-redux": "^5.0.3",
+    "react-router": "^4.1.1",
+    "react-router-dom": "^4.1.1",
+    "react-tap-event-plugin": "^2.0.1",
+    "react-treeview": "^0.4.6",
     "redux": "^3.6.0",
     "redux-thunk": "^2.2.0",
     "reselect": "^3.0.0"

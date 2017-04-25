@@ -1,0 +1,111 @@
+@import '../style/colors';
+@import '../style/dimens';
+@import '../style/utils';
+
+$icon-margin-right: 1em;
+
+:local(.container).desktop {
+  width: $side-menu-width;
+  height: 100vh;
+  float: left;
+  box-sizing: border-box;
+  padding-top: $nav-height;
+}
+
+:local(.container), .bm-menu {
+  color: $side-menu-fg-color;
+  background: $side-menu-bg-color;
+  padding-left: 10px;
+  padding-right: 10px;
+
+  .title {
+    padding-top: 22px;
+    font-weight: bold;
+    margin-bottom: 12px;
+    width: 100%;
+    text-align: center;
+    padding-right: 1em;
+    box-sizing: border-box;
+  }
+
+  a {
+    cursor: pointer;
+    color: $side-menu-fg-color;
+    text-decoration: none;
+    line-height: 22px;
+    &:hover {
+      background-color: $side-menu-fg-color;
+      color: $side-menu-bg-color;
+    }
+  }
+
+  a, .tree {
+    padding: 0 5px;
+  }
+
+  .menu {
+    a {
+      display: block;
+      margin: 3px 20px 3px 0;
+      .icon {
+        margin-right: $icon-margin-right * 0.75;
+      }
+    }
+  }
+
+  .tree {
+    .tree-view {
+      overflow-y: auto;
+    }
+
+    /* style for the children nodes container */
+    .tree-view_children {
+      margin-left: 20px;
+    }
+
+    .tree-view_children-collapsed {
+      height: 0;
+    }
+
+    .tree-view_arrow {
+      cursor: pointer;
+      margin-right: $icon-margin-right;
+      display: inline-block;
+      @include no-select()
+    }
+
+    .tree-view_arrow:after {
+      content: '▾';
+      font-size: 1em;
+    }
+
+    /* rotate the triangle to close it */
+    .tree-view_arrow-collapsed {
+      @include transform(rotate(-90deg))
+    }
+
+    .node {
+      @include transition(all, 0.5s);
+      border-radius: 3px;
+      line-height: 24px;
+      @include no-highlight();
+    }
+
+    .info {
+      margin-left: 20px;
+    }
+
+    .info, .node {
+      @include no-select();
+    }
+
+    .tree-view_arrow {
+      @include transition(all, 0.5s);
+    }
+  }
+}
+
+.bm-menu-wrap {
+  z-index: 3 !important;
+  width: $side-menu-width !important;
+}
