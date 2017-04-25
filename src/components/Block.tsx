@@ -13,6 +13,7 @@ import DragPreview from './DragPreview'
 import * as bowser from 'bowser'
 
 const isTouch = bowser.mobile || bowser.tablet
+const noop = () => {}
 
 interface BlockProps {
   id: number
@@ -115,6 +116,13 @@ const Side = ({value, unit:{shortName, pluralShortName, abbrev}}:IValue) => (
   </div>
 )
 
+const BaseBlock = ({sides, className}) => (
+  <div className={className}>
+    <Side {...sides[0]} />
+    {sides.length > 1 ? <Side {...sides[1]} /> : <SideWithoutUnit />}
+  </div>
+)
+
 class Block extends Component<ConnectedBlockProps, BlockState> {
   constructor(props) {
     super(props)
@@ -155,13 +163,14 @@ class Block extends Component<ConnectedBlockProps, BlockState> {
     } = this.props
     if (isTouch) {
       return connectDragSource(<span>
-      <DragPreview {...this.props} className={styles.container} />
+      <DragPreview {...this.props}>
+        <div className={styles.container} onClick={noop}>
+          <BaseBlock sides={sides} className={this.getClass()} />
+        </div>
+      </DragPreview>
         {connectDropTarget(
           <div className={styles.container} onClick={rotate}>
-            <div className={this.getClass()}>
-              <Side {...sides[0]} />
-              {sides.length > 1 ? <Side {...sides[1]} /> : <SideWithoutUnit />}
-            </div>
+            <BaseBlock sides={sides} className={this.getClass()} />
           </div>
         )}
 
@@ -170,10 +179,7 @@ class Block extends Component<ConnectedBlockProps, BlockState> {
     else {
       return connectDragSource(connectDropTarget(
         <div className={styles.container} onClick={rotate}>
-          <div className={this.getClass()}>
-            <Side {...sides[0]} />
-            {sides.length > 1 ? <Side {...sides[1]} /> : <SideWithoutUnit />}
-          </div>
+          <BaseBlock sides={sides} className={this.getClass()} />
         </div>
       ))
     }

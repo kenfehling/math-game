@@ -20,7 +20,7 @@ function getItemStyles (currentOffset) {
 
   // http://www.paulirish.com/2012/why-moving-elements-with-translate-is-better-than-posabs-topleft/
   const x = currentOffset.x
-  const y = currentOffset.y
+  const y = currentOffset.y + 24
   const transform = `translate(${x}px, ${y}px)`
 
   return {
@@ -34,7 +34,8 @@ function ItemPreview ({
                         isDragging,
                         currentOffset,
                         block,
-                        id
+                        id,
+                        children
                       }) {
   if (!isDragging || id !== block.id) {
     return null
@@ -45,7 +46,7 @@ function ItemPreview ({
       className={styles.container}
       style={getItemStyles(currentOffset)}
     >
-      <div>HELLO</div>
+      {children}
     </div>
   )
 }
