@@ -1,10 +1,17 @@
-{
-  "name": "Physics",
-  "sets": [{
-    "name": "Beginner",
-    "sets": [{
-      "name": "Time",
-      "problems": [1]
-    }]
-  }]
-}
+[{
+  "id": 1,
+  "subject": "Physics",
+  "difficulty": "Beginner"
+}, {
+  "id": 3,
+  "subject": "Algebra",
+  "difficulty": "Beginner"
+}, {
+  "id": 2,
+  "subject": "Algebra",
+  "difficulty": "Intermediate"
+}, {
+  "id": 4,
+  "subject": "Physics",
+  "difficulty": "Intermediate"
+}]

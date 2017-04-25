@@ -1,0 +1,81 @@
+{
+  "question": "If a car travels at 60 mph, how many meters does it travel in a minute?",
+  "blocks": [{
+    "sides": [
+      {
+        "value": 60,
+        "unit": "mi"
+      },
+      {
+        "value": 1,
+        "unit": "hr"
+      }
+    ]
+  }, {
+    "sides": [
+      {
+        "value": 3000,
+        "unit": "m"
+      },
+      {
+        "value": 1,
+        "unit": "min"
+      }
+    ]
+  }, {
+    "sides": [
+      {
+        "value": 60,
+        "unit": "s"
+      },
+      {
+        "value": 1,
+        "unit": "min"
+      }
+    ]
+  }, {
+    "sides": [
+      {
+        "value": 1,
+        "unit": "hr"
+      },
+      {
+        "value": 60,
+        "unit": "min"
+      }
+    ]
+  }, {
+    "sides": [
+      {
+        "value": 1,
+        "unit": "mi"
+      },
+      {
+        "value": 1.61,
+        "unit": "km"
+      }
+    ]
+  }, {
+    "sides": [
+      {
+        "value": 10,
+        "unit": "mm"
+      },
+      {
+        "value": 1,
+        "unit": "cm"
+      }
+    ]
+  }, {
+    "sides": [
+      {
+        "value": 1,
+        "unit": "km"
+      },
+      {
+        "value": 1000,
+        "unit": "m"
+      }
+    ]
+  }]
+}
