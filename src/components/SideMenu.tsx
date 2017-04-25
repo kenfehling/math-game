@@ -5,29 +5,26 @@ import {slide as SlideMenu} from 'react-burger-menu'
 import * as TreeView from 'react-treeview'
 import * as styles from './SideMenu.scss'
 import {connect} from 'react-redux'
-import {IProblemSet, IState} from '../model'
+import {IProblem, IState} from '../model'
+import {createStructuredSelector} from 'reselect'
+import {getDifficulties, getProblemSet, getSubjects} from '../selectors'
+import {getProblems} from '../utils/problems'
 
 interface SideMenuProps {
   className: string
 }
 
 type ConnectedSideMenuProps = SideMenuProps & {
-  problemSet: IProblemSet
+  problemSet: IProblem[]
+  subjects: string[]
+  difficulties: string[]
 }
 
 const label = (name:string) => <span className='node'>{name}</span>
 
-const ProblemSetGroup = ({name, sets}) => (
+const Difficulty = ({name, problems}) => (
   <TreeView key={name} nodeLabel={label(name)} defaultCollapsed={false}>
-    {sets.map((set, i) =>
-      <ProblemSet key={i} set={set} />
-    )}
-  </TreeView>
-)
-
-const ProblemSetLeaf = ({name, problems}) => (
-  <TreeView key={name} nodeLabel={label(name)} defaultCollapsed={false}>
-    {problems.map(id =>
+    {problems.map(({id}) =>
       <Link to={`/problems/${id}`} key={id} className='info'>
         Problem #{id}
       </Link>
@@ -35,11 +32,19 @@ const ProblemSetLeaf = ({name, problems}) => (
   </TreeView>
 )
 
-const ProblemSet = ({set}) => set.sets ?
-  <ProblemSetGroup {...set} /> :
-  <ProblemSetLeaf {...set} />
+const Subject = ({name, problems, difficulties}) => (
+  <TreeView key={name} nodeLabel={label(name)} defaultCollapsed={false}>
+    {difficulties.map((difficulty, i) =>
+      <Difficulty key={i}
+                  name={difficulty}
+                  problems={getProblems(problems, {difficulty})}
+      />
+    )}
+  </TreeView>
+)
 
-const ConnectedSideMenu = ({className, problemSet}:ConnectedSideMenuProps) => (
+const ConnectedSideMenu = ({className, problemSet, subjects, difficulties}:
+                             ConnectedSideMenuProps) => (
   <div className={`${styles.container} ${className}`}>
     <div className='title'>Menu</div>
     <div className='menu'>
@@ -53,14 +58,22 @@ const ConnectedSideMenu = ({className, problemSet}:ConnectedSideMenuProps) => (
       </Link>
     </div>
     <div className='title'>Problem sets</div>
-    <div className='tree'>
-      {problemSet && <ProblemSet set={problemSet} />}
-    </div>
+
+    {subjects.map((subject, i) => (
+      <div className='tree' key={i}>
+        <Subject name={subject}
+                 difficulties={difficulties}
+                 problems={getProblems(problemSet, {subject})}
+        />
+      </div>
+    ))}
   </div>
 )
 
-const mapStateToProps = (state:IState) => ({
-  problemSet: state.problemSet
+const mapStateToProps = createStructuredSelector({
+  problemSet: getProblemSet,
+  subjects: getSubjects,
+  difficulties: getDifficulties
 })
 
 const SideMenu = connect(

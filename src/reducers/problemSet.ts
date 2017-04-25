@@ -1,17 +1,13 @@
-import {IProblemSet} from '../model'
 import {IAction, ReceiveProblemSet} from '../actions/ProblemActions'
 import {RECEIVE_PROBLEM_SET} from '../constants/ActionTypes'
+import {IProblem} from '../model'
 
-const initialState:IProblemSet = {
-  name: '',
-  problems: []
-}
+const initialState:IProblem[] = []
 
-export default (state:IProblemSet=initialState, action:IAction):IProblemSet => {
+export default (state:IProblem[]=initialState, action:IAction):IProblem[] => {
   switch (action.type) {
     case RECEIVE_PROBLEM_SET: {
-      const {type, ...problemSet} = action as ReceiveProblemSet
-      return {...problemSet}
+      return (action as ReceiveProblemSet).problemSet
     }
     default:
       return state

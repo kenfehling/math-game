@@ -2,11 +2,11 @@ import {
   RECEIVE_PROBLEM, ROTATE_BLOCK, MOVE_BLOCK, SWITCH_BLOCK, RECEIVE_PROBLEM_SET
 } from '../constants/ActionTypes'
 import {fetch} from '../utils/api';
-import {IProblemDescription, IProblemSet} from '../model'
+import {IProblem, IProblemDescription} from '../model'
 
 export interface IAction {type: string}
 export type ReceiveProblem = IAction & IProblemDescription
-export type ReceiveProblemSet = IAction & IProblemSet
+export type ReceiveProblemSet = IAction & {problemSet:IProblem[]}
 export type RotateBlock = IAction & {id:number}
 export type MoveBlock = IAction & {id:number, toIndex:number}
 export type SwitchBlock = IAction & {id:number, used:boolean}
@@ -16,9 +16,9 @@ const receiveProblem = (problem:IProblemDescription):ReceiveProblem => ({
   ...problem
 })
 
-const receiveProblems = (problemSet:IProblemSet):ReceiveProblemSet => ({
+const receiveProblems = (problemSet:IProblem[]):ReceiveProblemSet => ({
   type: RECEIVE_PROBLEM_SET,
-  ...problemSet
+  problemSet
 })
 
 export const fetchProblem = (id:number) => (dispatch) =>

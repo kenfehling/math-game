@@ -1,10 +1,16 @@
 import {createSelector} from 'reselect'
-import {IBlock, IndexedBlock, IState} from './model'
+import {IBlock, IndexedBlock, IProblem, IState} from './model'
 import {evaluateBlocks, findBlock, indexBlocks} from './utils/blocks'
+import * as problemUtils from './utils/problems'
 
 const getBlocks = (state:IState) => {
   return state.problem.blocks
 }
+
+export const getProblemSet = (state:IState) => {
+  return state.problemSet
+}
+
 const getId = (_, props) => props.id
 
 export const getUsedBlocks = createSelector(
@@ -26,4 +32,14 @@ export const getBlock = createSelector(
 export const getComputedTotal = createSelector(
   getUsedBlocks,
   (blocks:IBlock[]):string => evaluateBlocks(blocks)
+)
+
+export const getSubjects = createSelector(
+  getProblemSet,
+  (problemSet:IProblem[]):string[] => problemUtils.getSubjects(problemSet)
+)
+
+export const getDifficulties = createSelector(
+  getProblemSet,
+  (problemSet:IProblem[]):string[] => problemUtils.getDifficulties(problemSet)
 )

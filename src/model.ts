@@ -32,6 +32,9 @@ export type IndexedBlock = IBlock & {
 }
 
 export interface IProblem {
+  id: number,
+  subject: string
+  difficulty: string
   question: string
   blocks: IBlock[]
   answer: any  // TODO: Define answer
@@ -39,7 +42,7 @@ export interface IProblem {
 
 export interface IState {
   problem: IProblem,
-  problemSet: IProblemSet
+  problemSet: IProblem[]
 }
 
 
@@ -58,7 +61,3 @@ export interface IProblemDescription {
   question: string
   blocks: IBlockDescription[]
 }
-
-export type IProblemSet = { name: string } & (
-  { problems: number[] } | { sets: IProblemSet[] }
-)

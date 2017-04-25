@@ -9,7 +9,10 @@ import {loadBlocks, rotateBlock, moveBlock, switchBlock} from '../utils/blocks'
 import {IProblem, IState} from '../model'
 
 const initialState:IProblem = {
+  id: 0,
   question: '',
+  subject: '',
+  difficulty: '',
   blocks: [],
   answer: undefined
 }
