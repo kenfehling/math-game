@@ -36,7 +36,7 @@ $unit-colors: (
   ft: lighten($distance, $factor),
   m: $distance,
   km: darken($distance, $factor),
-  mile: darken($distance, $factor * 1.5),
+  mi: darken($distance, $factor * 1.1),
 
   mL: lighten($volume, $factor * 2),
   fl-oz: lighten($volume, $factor * 1.5),

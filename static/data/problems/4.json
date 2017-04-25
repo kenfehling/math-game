@@ -1,21 +1,25 @@
 {
-  "question": "How many seconds are in an hour?",
+  "question": "If a car travels at 60 mph, how many meters does it travel in a minute?",
   "blocks": [{
     "sides": [
       {
-        "value": 100,
-        "unit": "m"
+        "value": 60,
+        "unit": "mi"
+      },
+      {
+        "value": 1,
+        "unit": "hr"
       }
     ]
   }, {
     "sides": [
       {
-        "value": 1000,
-        "unit": "ms"
+        "value": 3000,
+        "unit": "m"
       },
       {
         "value": 1,
-        "unit": "s"
+        "unit": "min"
       }
     ]
   }, {
@@ -44,11 +48,11 @@
     "sides": [
       {
         "value": 1,
-        "unit": "wk"
+        "unit": "mi"
       },
       {
-        "value": 7,
-        "unit": "day"
+        "value": 1.61,
+        "unit": "km"
       }
     ]
   }, {
@@ -65,23 +69,12 @@
   }, {
     "sides": [
       {
-        "value": 1000,
-        "unit": "m"
-      },
-      {
         "value": 1,
         "unit": "km"
-      }
-    ]
-  }, {
-    "sides": [
-      {
-        "value": 3000,
-        "unit": "m"
       },
       {
-        "value": 1,
-        "unit": "s"
+        "value": 1000,
+        "unit": "m"
       }
     ]
   }]
