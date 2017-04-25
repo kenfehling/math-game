@@ -1,4 +1,7 @@
-import {IBlock, IBlockDescription, IndexedBlock, IUnit, IValue} from '../model'
+import {
+  IBlock, IBlockDescription, IndexedBlock, IUnit, IValue,
+  IValueWithUnit
+} from '../model'
 import * as Units from '../constants/Units'
 import * as R from 'ramda'
 
@@ -10,8 +13,11 @@ export interface UnitCount {
   count: number
 }
 
-const loadUnit = (unit:string):IUnit => {
-  const result = units.find(u => u.abbrev === unit)
+const loadUnit = (unit:string):IUnit|undefined =>
+  units.find(u => u.abbrev === unit)
+
+const getUnit = (unit:string):IUnit => {
+  const result = loadUnit(unit)
   if (!result) {
     throw new Error(`Unit '${unit}' not found`)
   }
@@ -30,8 +36,9 @@ export const getDenominator = (block:IBlock):IValue =>
   block.rotated ? block.sides[0] : block.sides[1]
 
 export const countUnits = (vs:IValue[]):UnitCount[] => {
-  const counts = R.countBy((v: IValue) => v.unit.abbrev, vs)
-  return R.keys(counts).map(key => ({unit: loadUnit(key), count: counts[key]}))
+  const valuesWithUnits = vs.filter(v => v.unit) as IValueWithUnit[]
+  const counts = R.countBy((v:IValueWithUnit) => v.unit.abbrev, valuesWithUnits)
+  return R.keys(counts).map(key => ({unit: getUnit(key), count: counts[key]}))
 }
 
 export const getUnitCount = (ucs:UnitCount[], unit:IUnit):number => {

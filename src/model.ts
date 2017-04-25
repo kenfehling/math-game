@@ -17,6 +17,11 @@ export interface IUnit {
 
 export interface IValue {
   value: number
+  unit?: IUnit
+}
+
+export interface IValueWithUnit {
+  value: number
   unit: IUnit
 }
 

@@ -104,17 +104,25 @@ const blockTarget = {
   }
 }
 
-const SideWithoutUnit = () => (
-  <div className='side no-unit'><div className='text'>1</div></div>
+const SideWithoutUnit = ({value=1}) => (
+  <div className='side no-unit'><div className='text'>{value}</div></div>
 )
 
-const Side = ({value, unit:{shortName, pluralShortName, abbrev}}:IValue) => (
-  <div className={`side ${abbrev.replace(' ', '-')}`}>
-    <div className='text'>
-      {value} {value === 1 ? shortName : pluralShortName}
-    </div>
-  </div>
-)
+const Side = ({value, unit}:IValue) => {
+  if (unit) {
+    const {shortName, pluralShortName, abbrev} = unit
+    return (
+      <div className={`side ${abbrev.replace(' ', '-')}`}>
+        <div className='text'>
+          {value} {value === 1 ? shortName : pluralShortName}
+        </div>
+      </div>
+    )
+  }
+  else {
+    return <SideWithoutUnit value={value} />
+  }
+}
 
 const BaseBlock = ({sides, className}) => (
   <div className={className}>

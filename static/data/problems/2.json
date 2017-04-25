@@ -1,14 +1,14 @@
 {
-  "question": "How many seconds are in an hour?",
+  "question": "If 2y = 5x and x = 3, what is y?",
   "blocks": [{
     "sides": [
       {
-        "value": 8,
-        "unit": "fl oz"
+        "value": 5,
+        "unit": "x"
       },
       {
-        "value": 1,
-        "unit": "cup"
+        "value": 2,
+        "unit": "y"
       }
     ]
   }, {
@@ -19,6 +19,20 @@
       },
       {
         "value": 3,
+        "unit": ""
+      }
+    ]
+  }, {
+    "sides": [
+      {
+        "value": 3,
+        "unit": "x"
+      }
+    ]
+  }, {
+    "sides": [
+      {
+        "value": 3,
         "unit": "y"
       }
     ]
@@ -26,22 +40,7 @@
     "sides": [
       {
         "value": 1,
-        "unit": "kg"
-      },
-      {
-        "value": 1000,
-        "unit": "g"
-      }
-    ]
-  }, {
-    "sides": [
-      {
-        "value": 1000,
-        "unit": "mg"
-      },
-      {
-        "value": 1,
-        "unit": "g"
+        "unit": "y"
       }
     ]
   }]
