@@ -13,14 +13,21 @@ interface ProblemProps {
 }
 
 type ConnectedProblemProps = ProblemProps & {
-  load: () => void,
+  id: number
+  fetchProblem: (id:number) => void
   question: string|undefined
 }
 
 class Problem extends Component<ConnectedProblemProps, undefined> {
 
   componentWillMount() {
-    this.props.load()
+    this.props.fetchProblem(this.props.id)
+  }
+
+  componentDidUpdate(newProps) {
+    if (newProps.id !== this.props.id) {
+      this.props.fetchProblem(this.props.id)
+    }
   }
 
   render() {
@@ -38,12 +45,13 @@ class Problem extends Component<ConnectedProblemProps, undefined> {
   }
 }
 
-const mapStateToProps = (state:IState) => ({
-  question: state.problem.question
+const mapStateToProps = (state:IState, ownProps) => ({
+  question: state.problem.question,
+  id: ownProps.match.params.id
 })
 
 const mapDispatchToProps = (dispatch, ownProps:ProblemProps) => ({
-  load: () => dispatch(fetchProblem(ownProps.match.params.id))
+  fetchProblem: (id:number) => dispatch(fetchProblem(id))
 })
 
 const mergeProps = (stateProps, dispatchProps, ownProps) => ({

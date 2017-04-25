@@ -3,7 +3,15 @@
   "subject": "Physics",
   "difficulty": "Beginner"
 }, {
-  "id": 2,
+  "id": 3,
   "subject": "Algebra",
   "difficulty": "Beginner"
+}, {
+  "id": 2,
+  "subject": "Algebra",
+  "difficulty": "Intermediate"
+}, {
+  "id": 4,
+  "subject": "Physics",
+  "difficulty": "Intermediate"
 }]

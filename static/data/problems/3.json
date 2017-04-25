@@ -1,9 +1,20 @@
 {
-  "question": "If 2y = 5x and x = 3, what is 3x in terms of y?",
+  "question": "If y = 2x, how many y is 8x?",
   "blocks": [{
     "sides": [
       {
-        "value": 5,
+        "value": 2,
+        "unit": "x"
+      },
+      {
+        "value": 1,
+        "unit": "y"
+      }
+    ]
+  }, {
+    "sides": [
+      {
+        "value": 8,
         "unit": "x"
       },
       {
@@ -14,32 +25,14 @@
   }, {
     "sides": [
       {
-        "value": 1,
-        "unit": "x"
-      },
-      {
-        "value": 3,
-        "unit": ""
-      }
-    ]
-  }, {
-    "sides": [
-      {
-        "value": 3,
+        "value": 8,
         "unit": "x"
       }
     ]
   }, {
     "sides": [
       {
-        "value": 3,
-        "unit": "y"
-      }
-    ]
-  }, {
-    "sides": [
-      {
-        "value": 1,
+        "value": 8,
         "unit": "y"
       }
     ]
